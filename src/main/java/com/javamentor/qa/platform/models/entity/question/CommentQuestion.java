@@ -20,7 +20,6 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
 @Getter
@@ -68,12 +67,13 @@ public class CommentQuestion implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CommentQuestion that = (CommentQuestion) o;
-        return Objects.equals(id, that.id);
+        return id != null &&
+                id.equals(that.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return getClass().hashCode();
     }
 
     public void setId(Long id) {

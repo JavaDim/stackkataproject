@@ -23,7 +23,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Entity
 @Getter
@@ -73,13 +72,12 @@ public class Reputation implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reputation reputation = (Reputation) o;
-        return Objects.equals(id, reputation.id) &&
-                Objects.equals(persistDate, reputation.persistDate) &&
-                Objects.equals(count, reputation.count);
+        return id != null &&
+                id.equals(reputation.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, persistDate, count);
+        return getClass().hashCode();
     }
 }

@@ -20,7 +20,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Entity
 @Getter
@@ -66,14 +65,12 @@ public class Comment implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Comment comment = (Comment) o;
-        return Objects.equals(id, comment.id) &&
-                Objects.equals(text, comment.text) &&
-                Objects.equals(persistDateTime, comment.persistDateTime) &&
-                Objects.equals(lastUpdateDateTime, comment.lastUpdateDateTime);
+        return id != null &&
+                id.equals(comment.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, text, persistDateTime, lastUpdateDateTime);
+        return getClass().hashCode();
     }
 }

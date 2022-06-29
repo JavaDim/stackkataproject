@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Entity
 @Getter
@@ -50,12 +49,12 @@ public class Chat {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Chat chat = (Chat) o;
-        return Objects.equals(id, chat.id) && Objects.equals(title, chat.title) &&
-                Objects.equals(persistDate, chat.persistDate) && chatType == chat.chatType;
+        return id != null &&
+                id.equals(chat.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, persistDate, chatType);
+        return getClass().hashCode();
     }
 }

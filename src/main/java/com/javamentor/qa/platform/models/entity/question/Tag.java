@@ -21,7 +21,6 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Getter
@@ -76,15 +75,13 @@ public class Tag implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tag tag = (Tag) o;
-        return Objects.equals(id, tag.id) &&
-                Objects.equals(name, tag.name) &&
-                Objects.equals(description, tag.description) &&
-                Objects.equals(persistDateTime, tag.persistDateTime);
+        return id != null &&
+                id.equals(tag.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, persistDateTime);
+        return getClass().hashCode();
     }
 
 
