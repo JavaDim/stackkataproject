@@ -11,6 +11,7 @@ import java.util.Collection;
 public abstract class ReadWriteServiceImpl<E, K> extends ReadOnlyServiceImpl<E, K> {
 
     private final ReadWriteDao<E, K> readWriteDao;
+
     private static final String ENTITIES_MUST_NOT_BE_NULL = "Entities cannot be null and empty";
 
     public ReadWriteServiceImpl(ReadWriteDao<E, K> readWriteDao) {
@@ -46,7 +47,6 @@ public abstract class ReadWriteServiceImpl<E, K> extends ReadOnlyServiceImpl<E, 
         readWriteDao.persistAll(entities);
     }
 
-
     @Transactional
     public void persistAll(Collection<E> entities) {
         if (entities == null || entities.isEmpty()) {
@@ -63,7 +63,6 @@ public abstract class ReadWriteServiceImpl<E, K> extends ReadOnlyServiceImpl<E, 
         readWriteDao.deleteAll(entities);
     }
 
-
     @Transactional
     public void updateAll(Iterable<? extends E> entities) {
         if (entities == null || !entities.iterator().hasNext()) {
@@ -78,6 +77,7 @@ public abstract class ReadWriteServiceImpl<E, K> extends ReadOnlyServiceImpl<E, 
     }
 
     @Transactional
-    public void updateUserPublicInfo(User user) { readWriteDao.updateUserPublicInfo(user); }
-
+    public void updateUserPublicInfo(User user) {
+        readWriteDao.updateUserPublicInfo(user);
+    }
 }
