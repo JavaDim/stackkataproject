@@ -19,7 +19,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -65,13 +64,12 @@ public class GroupChat{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GroupChat groupChat = (GroupChat) o;
-        return Objects.equals(id, groupChat.id) &&
-                Objects.equals(chat, groupChat.chat) &&
-                Objects.equals(users, groupChat.users);
+        return id != null &&
+                id.equals(groupChat.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, chat, users);
+        return getClass().hashCode();
     }
 }

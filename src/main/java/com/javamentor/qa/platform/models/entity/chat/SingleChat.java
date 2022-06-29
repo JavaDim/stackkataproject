@@ -17,7 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import java.util.Objects;
+
 
 @Entity
 @Getter
@@ -62,14 +62,12 @@ public class SingleChat{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SingleChat that = (SingleChat) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(chat, that.chat) &&
-                Objects.equals(userOne, that.userOne) &&
-                Objects.equals(useTwo, that.useTwo);
+        return id != null &&
+                id.equals(that.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, chat, userOne, useTwo);
+        return getClass().hashCode();
     }
 }

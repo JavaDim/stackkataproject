@@ -2,7 +2,6 @@ package com.javamentor.qa.platform.models.entity.user;
 
 import com.javamentor.qa.platform.models.entity.Badge;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
 @Getter
@@ -51,13 +49,13 @@ public class UserBadges implements Serializable {
             return false;
         }
         UserBadges that = (UserBadges) obj;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(ready, that.ready);
+        return id != null &&
+                id.equals(that.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, ready);
+        return getClass().hashCode();
     }
 }
 

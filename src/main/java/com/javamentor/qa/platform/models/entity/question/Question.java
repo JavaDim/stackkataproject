@@ -32,7 +32,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Getter
@@ -123,18 +122,13 @@ public class Question implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Question)) return false;
         Question question = (Question) o;
-        return Objects.equals(id, question.id) &&
-                Objects.equals(title, question.title) &&
-                Objects.equals(description, question.description) &&
-                Objects.equals(persistDateTime, question.persistDateTime) &&
-                Objects.equals(user, question.user) &&
-                Objects.equals(tags, question.tags) &&
-                Objects.equals(lastUpdateDateTime, question.lastUpdateDateTime) &&
-                Objects.equals(isDeleted, question.isDeleted);
+        return id != null &&
+                id.equals(question.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, persistDateTime, user, tags, lastUpdateDateTime, isDeleted);
+        return getClass().hashCode();
     }
 }
+

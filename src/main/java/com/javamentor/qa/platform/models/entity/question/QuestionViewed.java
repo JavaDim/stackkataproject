@@ -17,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Entity
 @Table(name = "question_viewed")
@@ -48,15 +47,13 @@ public class QuestionViewed implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         QuestionViewed that = (QuestionViewed) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(user, that.user) &&
-                Objects.equals(question, that.question) &&
-                Objects.equals(localDateTime, that.localDateTime);
+        return id != null &&
+                id.equals(that.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, question, localDateTime);
+        return getClass().hashCode();
     }
 }
 
