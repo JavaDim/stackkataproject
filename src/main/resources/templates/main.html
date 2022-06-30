@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Main</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+
+    <script type="text/javascript" src="/js/sidebar.js"></script>
+    <script type="text/javascript" src="/js/header.js"></script>
+    <script type="text/javascript" src="/js/footer.js"></script>
+
+</head>
+
+<style>
+    /*div {*/
+    /*    border: 1px solid red;*/
+    /*}*/
+
+    hr {
+        background-color: grey;
+        color: grey;
+        height: 2px;
+    }
+</style>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <div class="row">
+
+                <div class="col-9">
+                    <h1 class="flex--item  fl1 fs-headline1">Исследуйте вопросы сообщества</h1>
+                </div>
+
+                <div class="col md-auto ">
+                    <button href="/question" type="button" class="btn btn-primary">Задать вопрос</button>
+                </div>
+
+            </div>
+            <div class="row justify-content-between">
+
+                <div class="col">
+
+                    <div class="row">
+                        <div>
+                            <a href="#" class="badge badge-primary" title="" rel="tag">Метка</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <a href="/tag_page" class="alert-link">Больше меток</a>
+                    </div>
+
+                </div>
+
+                <div class="col align-self-end justify-content-end">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button href="#" type="button" class="btn btn-outline-secondary">Интересные</button>
+                        <button href="#" type="button" class="btn btn-outline-secondary">Конкурсные</button>
+                        <button href="#" type="button" class="btn btn-outline-secondary">Популярные</button>
+                        <button href="#" type="button" class="btn btn-outline-secondary">За неделю</button>
+                        <button href="#" type="button" class="btn btn-outline-secondary">За месяц</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <hr>
+                <div class="row">
+
+                    <div class="col-2">
+                        <div class="row">
+                            Голоса
+                        </div>
+                        <div class="row">
+                            Число ответов
+                        </div>
+                        <div class="row">
+                            Число показов
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="row">
+                            <a href="#" class="s-link"><h3>Заголовок вопроса</h3></a>
+                        </div>
+                        <div class="row justify-content-between">
+                            <div class="col-md-auto">
+                                <a href="#" class="badge badge-primary" title="" rel="tag">Метка</a>
+                            </div>
+                            <div class="col-md-auto">
+                                <div class="row">
+                                    <div class="column">
+                                        <a href="#" class="alert-link">Имя автора &nbsp;</a>
+                                    </div>
+                                    <div class="column">
+                                        Репутация автора &nbsp;
+                                    </div>
+                                    <div class="column">
+                                        Время последнего ответа
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row justify-content-end">
+                <button href="/questions" type="button" class="btn btn-primary">Посмотреть другие вопросы</button>
+            </div>
+
+        </div>
+
+        <div class="col">
+
+            <div class="row">
+                <h6>Недавние метки</h6>
+            </div>
+
+            <div class="row">
+                <a href="#" class="badge badge-primary" title="" rel="tag">Метка</a>
+                <span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span
+                        class="item-multiplier-count">1</span> </span>
+            </div>
+
+            <div class="row justify-content-end">
+                <a href="/tag_page" class="alert-link">Больше меток >></a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+
