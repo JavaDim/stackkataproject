@@ -24,34 +24,38 @@ public abstract class ReadOnlyDaoImpl<E, K> {
     }
 
     public boolean existsById(K id) {
-        return entityManager
+        return !entityManager
                 .createQuery("from " + clazz.getName() + " where id = :id")
                 .setParameter("id", id)
-                .getResultList().size() > 0;
+                .getResultList().isEmpty();
     }
 
     public Optional<E> getById(K id) {
         return SingleResultUtil.getSingleResultOrNull(entityManager
-                        .createQuery("from " + clazz.getName() + " where id = :id", clazz)
-                        .setParameter("id", id));
+                .createQuery("from " + clazz.getName() + " where id = :id", clazz)
+                .setParameter("id", id));
     }
 
     public List<E> getAllByIds(Iterable<K> ids) {
         return ids != null && ids.iterator().hasNext()
                 ? entityManager
-                        .createQuery("from " + clazz.getName() + " where id in :ids", clazz)
-                        .setParameter("ids", ids)
-                        .getResultList()
+                .createQuery("from " + clazz.getName() + " where id in :ids", clazz)
+                .setParameter("ids", ids)
+                .getResultList()
                 : Collections.emptyList();
     }
 
     public boolean existsByAllIds(Collection<K> ids) {
-        return ids != null && ids.size() > 0 && getAllByIds(ids).size() == ids.size();
+        return ids != null && !ids.isEmpty() && getAllByIds(ids).size() == ids.size();
     }
 
     public Optional<User> getByEmail(String email) {
-        return SingleResultUtil.getSingleResultOrNull(entityManager
-                .createQuery("from " + User.class.getName() + " where email = :email", User.class)
+        return SingleResultUtil.getSingleResultOrNull(entityManager.createQuery("""
+                        SELECT u
+                        FROM User u
+                        JOIN FETCH u.role
+                        WHERE u.email = :email
+                        """, User.class)
                 .setParameter("email", email));
     }
 }
