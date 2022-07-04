@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Метки</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <link th:href="@{/css/tagpage.css}" rel="stylesheet">
+</head>
+<body>
+
+<main class="container">
+    <section class="p-3 p-md-4 content">
+        <h1 class="mb-3 h3 fw-normal">Метки</h1>
+        <p class="mb-3 page-description">Метка — это ключевое слово, позволяющее отнести ваш вопрос в одну категорию с другими похожими вопросами. Благодаря подбору правильных меток другие участники смогут проще найти ваш вопрос и быстрее дать на него ответ.</p>
+        <a class="mb-4 text-decoration-none d-inline-block" href="#">Показать все синонимы меток</a>
+
+        <div class="d-flex flex-wrap justify-content-between">
+            <label class="mb-3 position-relative">
+                <input class="form-control tag-filter" autocomplete="off" type="text" maxlength="35" placeholder="Фильтрация по имени" autofocus>
+                <svg aria-hidden="true" class="icon-search" width="18" height="18" viewBox="0 0 18 18" fill="#cccccc"><path d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z"></path></svg>
+            </label>
+
+            <div class="mb-3 btn-group ms-auto" role="group" aria-label="sort-buttons">
+                <button type="button" class="btn btn-sort btn-sort-active">Популярные</button>
+                <button type="button" class="btn btn-sort">Имя</button>
+                <button type="button" class="btn btn-sort">Новые</button>
+            </div>
+        </div>
+
+        <div class="tag-list">
+            <div class="tag-card">
+                <a href="#" class="tag">javascript</a>
+                <p class="tag-card-description">JavaScript (не путать с Java) — динамический, интерпретируемый язык со слабой типизацией, обычно используемый для написания скриптов на стороне клиента. Эта метка предназначена для вопросов, связанных с ECMAScript, его различными диалектами и реализациями (за исключением ActionScript). Если нет меток, относящихся к фреймворкам, предполагается, что код в ответах также не должен требовать сторонних библиотек.</p>
+                <div class="tag-card-amount">
+                    <div href="#">61698 вопросов</div>
+                    <div class="tag-card-amount-links">
+                        <a href="#">20 задано сегодня</a>,
+                        <a href="#">167 за неделю</a>
+                    </div>
+                </div>
+            </div>
+            <div class="tag-card">
+                <a href="#" class="tag">python</a>
+                <p class="tag-card-description">Python — высокоуровневый язык с динамической типизацией, ориентированный на создание легко читаемого кода. Имеет две основные версии — 2 и 3. Используйте дополнительную метку [python-2.x] или [python-3.x], если ваш вопрос ориентирован на конкретную версию.</p>
+                <div class="tag-card-amount">
+                    <div href="#">50547 вопросов</div>
+                    <div class="tag-card-amount-links">
+                        <a href="#">49 задано сегодня</a>,
+                        <a href="#">323 за неделю</a>
+                    </div>
+                </div>
+            </div>
+            <div class="tag-card">
+                <a href="#" class="tag">java</a>
+                <p class="tag-card-description">Java (не путать с JavaScript) — строго типизированный объектно-ориентированный язык программирования. Приложения Java обычно транслируются в специальный байт-код, поэтому они могут работать на любой компьютерной архитектуре, с помощью виртуальной Java-машины (JVM). Используйте эту метку для вопросов, относящихся к языку Java или инструментам из платформы Java.</p>
+                <div class="tag-card-amount">
+                    <div href="#">44849 вопросов</div>
+                    <div class="tag-card-amount-links">
+                        <a href="#">13 задано сегодня</a>,
+                        <a href="#">68 за неделю</a>
+                    </div>
+                </div>
+            </div>
+            <div class="tag-card">
+                <a href="#" class="tag">c#</a>
+                <p class="tag-card-description">C# (произносится «си шарп») — мультипарадигменный язык программирования, флагманский язык фреймворка .NET. Указывайте в вопросах метку используемой реализации Common Language Infrastructure ([.net], [.net-core], [mono]), если вопрос относится к разработке приложений под эту конкретную реализацию или ее особенностей.</p>
+                <div class="tag-card-amount">
+                    <div href="#">38974 вопроса</div>
+                    <div class="tag-card-amount-links">
+                        <a href="#">5 задано сегодня</a>,
+                        <a href="#">93 за неделю</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav aria-label="pagination">
+            <ul class="pagination justify-content-end">
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                <li class="page-item"><a class="page-link" href="#">162</a></li>
+                <li class="page-item"><a class="page-link" href="#">Далее</a></li>
+            </ul>
+        </nav>
+    </section>
+</main>
+
+<script type="text/javascript" src="/js/sidebar.js"></script>
+<script type="text/javascript" src="/js/header.js"></script>
+<script type="text/javascript" src="/js/footer.js"></script>
+
+</body>
+</html>

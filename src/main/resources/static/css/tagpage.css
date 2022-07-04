@@ -1,0 +1,163 @@
+body > main.container {
+    padding: 0;
+    max-width: 1264px;
+}
+
+.content {
+    margin: 0 auto 0;
+    max-width: 1100px;
+}
+
+.page-description {
+    max-width: 630px;
+    font-size: 15px;
+}
+
+a {
+    font-size: 13px;
+}
+
+.tag-filter {
+    padding: 8px 9px 8px 32px;
+    font-size: 13px;
+}
+
+.icon-search {
+    position: absolute;
+    top: 50%;
+    left: 0.5em;
+    margin-top: -9px;
+    color: hsl(210,8%,75%);
+}
+
+.btn-sort {
+    --bs-btn-font-size: 13px;
+    --bs-btn-color: rgb(106, 115, 124);
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: rgb(159, 166, 173);
+    --bs-btn-border-radius: 3px;
+    --bs-btn-hover-border-color: rgb(159, 166, 173);
+    --bs-btn-hover-color: hsl(210,8%,35%);
+    --bs-btn-hover-bg: hsl(210,8%,97.5%);
+    --bs-btn-active-color: rgb(59, 64, 69);
+    --bs-btn-active-bg: hsl(210,8%,97.5%);
+    --bs-btn-active-border-color: hsl(210,8%,55%);
+}
+
+.btn-sort-active {
+    --bs-btn-color: rgb(59, 64, 69);
+    --bs-btn-bg: rgb(227, 230, 232);
+    --bs-btn-border-color: hsl(210deg 8% 55%);
+    --bs-btn-hover-border-color: hsl(210deg 8% 55%);
+    --bs-btn-hover-color: rgb(59, 64, 69);
+    --bs-btn-hover-bg: rgb(227, 230, 232);
+    --bs-btn-active-bg: rgb(227, 230, 232);
+    --bs-btn-active-border-color: hsl(210,8%,55%);
+}
+
+.tag-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+.tag-card {
+    border: 1px solid hsl(210deg 8% 85%);
+    border-radius: 3px;
+    padding: 12px;
+}
+
+.tag-card > :not(:last-child) {
+    margin-bottom: 12px;
+}
+
+.tag-card > :last-child {
+    margin-bottom: 0;
+}
+
+.tag {
+    display: inline-block;
+    margin: 2px 2px 2px 0;
+    border: 1px solid hsl(205deg 46% 92%);
+    border-radius: 3px;
+    padding: 0.4em 0.5em;
+    background-color: hsl(205deg 46% 92%);
+    font-size: 12px;
+    line-height: 1;
+    color: hsl(205deg 47% 42%);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.tag:hover {
+    border-color: hsl(205deg 53% 88%);
+    background-color: hsl(205deg 53% 88%);
+    color: hsl(205deg 46% 32%);
+}
+
+.tag-card-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    font-size: 13px;
+}
+
+.tag-card-amount {
+    display: flex;
+}
+
+.tag-card-amount, .tag-card-amount a {
+    font-size: 12px;
+    color: rgb(131 140 149);
+    text-decoration: none;
+}
+
+.tag-card-amount > :first-child {
+    margin-right: auto;
+    padding-right: 4px;
+}
+
+.pagination {
+    --bs-pagination-padding-x: 10px;
+    --bs-pagination-padding-y: 0;
+    --bs-pagination-font-size: 13px;
+    --bs-pagination-color: black;
+    --bs-pagination-bg: transparent;
+    --bs-pagination-border-width: 1px;
+    --bs-pagination-border-color: rgb(214, 217, 220);
+    --bs-pagination-border-radius: 3px;
+    --bs-pagination-hover-color: black;
+    --bs-pagination-hover-bg: rgb(214, 217, 220);
+    --bs-pagination-hover-border-color: rgb(186, 191, 196);
+    --bs-pagination-active-color: white;
+    --bs-pagination-active-bg: rgb(244, 130, 37);
+    --bs-pagination-active-border-color: transparent;
+    --bs-pagination-disabled-color: black;
+    --bs-pagination-disabled-bg: transparent;
+    --bs-pagination-disabled-border-color: transparent;
+
+    margin: 20px 0;
+    line-height: 25px;
+}
+
+@media screen and (max-width: 1264px) {
+    .tag-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media screen and (max-width: 980px) {
+    .tag-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media screen and (max-width: 640px) {
+    .page-description {
+        font-size: 14px;
+    }
+    .tag-list {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
