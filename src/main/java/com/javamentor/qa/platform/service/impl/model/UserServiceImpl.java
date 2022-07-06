@@ -1,21 +1,26 @@
 package com.javamentor.qa.platform.service.impl.model;
 
 import com.javamentor.qa.platform.dao.abstracts.model.UserDao;
+import com.javamentor.qa.platform.models.entity.user.User;
+import com.javamentor.qa.platform.service.abstracts.model.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-public abstract class UserServiceImpl <E, K>extends ReadWriteServiceImpl <E, K>{
+@Service
+public class UserServiceImpl extends ReadWriteServiceImpl <User, Long> implements UserService {
 
-    private final UserDao<E, K> userDao;
+    private final UserDao userDao;
 
-    public UserServiceImpl(UserDao<E, K> userDao) {
-        super((userDao));
+    @Autowired
+    public UserServiceImpl(UserDao userDao) {
+        super(userDao);
         this.userDao = userDao;
     }
 
-    @Transactional
-    public Optional<E> getByEmail(K email) {
+    public Optional<User> getByEmail(String email) {
         return userDao.getByEmail(email);
     }
 }

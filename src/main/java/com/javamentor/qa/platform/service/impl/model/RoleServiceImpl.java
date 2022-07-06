@@ -1,21 +1,25 @@
 package com.javamentor.qa.platform.service.impl.model;
 
 import com.javamentor.qa.platform.dao.abstracts.model.RoleDao;
-import org.springframework.transaction.annotation.Transactional;
+import com.javamentor.qa.platform.models.entity.user.Role;
+import com.javamentor.qa.platform.service.abstracts.model.RoleService;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-public abstract class RoleServiceImpl <E, K> extends ReadWriteServiceImpl <E, K>{
-    private final RoleDao <E, K> roleDao;
+@Service
+public class RoleServiceImpl extends ReadWriteServiceImpl<Role, Long> implements RoleService {
 
-    protected RoleServiceImpl(RoleDao<E, K> roleDao) {
+    private RoleDao roleDao;
+
+    public RoleServiceImpl(RoleDao roleDao) {
         super(roleDao);
         this.roleDao = roleDao;
     }
 
-
-    @Transactional
-    public Optional<E> getByName(K name) {
+    @Override
+    public Optional<Role> getByName(String name) {
         return roleDao.getByName(name);
     }
+
 }

@@ -2,6 +2,8 @@ package com.javamentor.qa.platform.service.abstracts.model;
 
 import com.javamentor.qa.platform.models.entity.user.User;
 
-public interface UserService <E, K> extends ReadWriteService <E, K>{
-    E getByEmail(K email);
+import java.util.Optional;
+
+public interface UserService extends ReadWriteService<User, Long>{
+    Optional<User> getByEmail (String email);
 }
