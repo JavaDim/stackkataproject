@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
+        <script type="text/javascript" src="/js/sidebar.js"></script>
+        <script type="text/javascript" src="/js/header.js"></script>
+        <script type="text/javascript" src="/js/footer.js"></script>
+
+        <title>questions</title>
+    </head>
+<body>
+
+<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><h1><small>stackoverflow</small></h1></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex">
+                    <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="col-lg-3" style="background-color: #F0FFF0">
+                <button type="button" class="btn btn-light">Войти</button>
+                <button type="button" class="btn btn-primary">Регистрация</button>
+            </div>
+        </div>
+    </nav>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2" style="background-color: white">
+            <div class="panel panel-default">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#home" role="tab" data-toggle="tab">ГЛАВНАЯ</a></li>
+                </ul>
+                <ul class="nav nav-tabs">
+                    <li><a href="src/main/resources/templates/questions.html" role="tab" data-toggle="tab">Вопросы</a></li>
+                </ul>
+                <ul class="nav nav-tabs">
+                    <li><a href="#home" role="tab" data-toggle="tab">Метки</a></li>
+                </ul>
+            </div>
+            <ul class="nav nav-tabs">
+                <li><a href="#home" role="tab" data-toggle="tab">Участники</a></li>
+            </ul>
+            <ul class="nav nav-tabs">
+                <li><a href="#home" role="tab" data-toggle="tab">Неотвеченные</a></li>
+            </ul>
+        </div>
+
+
+    <div class="col-lg-7" style="background-color: white">
+        <div class="text-right">
+            <button class="btn btn-info h-50" onclick="window.location.href='/questions/ask'">Задать вопрос</button>
+        </div>
+        <br>
+        <div class="text-right">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options"  id="new_questions" autocomplete="off" checked> Новые
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="current_questions" autocomplete="off"> Текущие
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="competition_questions" autocomplete="off"> Неотвеченные
+                </label>
+            </div>
+        </div>
+
+
+
+        <div class="list-group">
+            <a href="#" class="list-group-item disabled">
+            </a>
+            <a href="src/main/java/com/javamentor/qa/platform/models/entity/question/Question.java" class="list-group-item"></a>
+        </div>
+
+
+    </div>
+
+
+    <div class="col-lg-3" style="background-color: white">
+        <br>
+        <br>
+        <h1><small>связанные метки</small></h1>
+        <br>
+        <div class="btn-group-vertical btn-group-md" data-toggle="buttons">
+            <button type="button" class="btn btn-primary">Php</button>
+            <button type="button" class="btn btn-primary">Java</button>
+            <button type="button" class="btn btn-primary">JavaScript</button>
+            <button type="button" class="btn btn-primary">SQL</button>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</header>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
