@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<!--    подключение библиотеки иконок-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="/js/sidebar.js"></script>
+    <script type="text/javascript" src="/js/header.js"></script>
+    <script type="text/javascript" src="/js/footer.js"></script>
+
+    <title>StackKata_Question</title>
+
+    <style>
+        .row{background-color: whitesmoke}
+        .blocks{border-color: olivedrab}
+        .help{font-size: 0.87rem;}
+        .help:hover {background-color: aliceblue;}
+        .input-group {border-color: gainsboro;}
+        .hints{border-color: gainsboro; background-color: aliceblue}
+        .flex{padding-bottom: 10px; margin-bottom: 10px}
+        .d-flex{background-color: white; margin-top: -4mm}
+        .flex1{background-color: lightgrey; width: 20%; margin-left: 15px}
+        .flex3{background-color: lightgrey; width: 42%; margin-left: 15px}
+        .myRegistrationButton:hover {background-color: aliceblue; font-size: 1.1rem}
+        .stringUnderTable, .text-secondary{font-size: 0.8rem}
+        .columns, .col-6, .space{background-color: white}
+        .createDraft{font-size: 1.1rem;}
+        .registration{font-size: 0.9rem}
+        .prompt{line-height: 20px; font-size: 0.87rem}
+        .myIndents{margin-left: 14px}
+        .checkButton{margin-left: -12px}
+        .nameRegistration{margin-bottom: 5px}
+        code {color: black; background-color: lightgrey; padding: 2px; font-size: 105%;}
+        /*настройка ширины модальных окон*/
+        @media screen and (min-width: 410px) {
+            .modal-dialog {
+                max-width: 410px;
+            }
+        }
+        textarea:focus,
+        input[type="text"]:focus,
+        input[type="color"]:focus,
+        .form-control:focus{
+            border-color: #0CE1D85E;
+            box-shadow: 0 1px 1px rgba(61, 245, 216, 0.075) inset, 0 0 8px rgba(49, 229, 214, 0.29);
+            outline: 0 none;
+        }
+        p {
+            margin-bottom: 0.6rem;
+        }
+        body {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container-fluid w-100 h-100">
+    <div class="row h-100">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="blocks col-8 ml-auto mr-3 h-100" style="height: 200px;">
+                            <br>
+                            <h4>Задать публичный вопрос</h4>
+                            <br>
+                        </div>
+                        <div class="blocks col-3 mr-auto ml-3 h-100" style="height: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="blocks col-8 ml-auto mr-3 bg-white border shadow-sm p-3 mb-5 bg-white rounded h-100" style="height: 200px;">
+                            <h6><strong>Заголовок</strong></h6>
+                            <div class="form-group">
+                                <small id="headerHelpBlock" class="form-text text-muted">
+                                    Будьте конкретны. Представьте, что вы задаёте вопрос другому человеку.
+                                </small>
+                                <input type="email" class="form-control" id="headerQuestion" aria-describedby="headerHelpBlock"
+                                       placeholder="В чём заключается ваш вопрос? Будьте конкретны.">
+                            </div>
+                            <h6><strong>Основная часть</strong></h6>
+                            <small id="textQuestion" class="form-text text-muted">
+                                Добавьте всю информацию, которая может понадобиться для ответа на ваш вопрос.
+                            </small>
+
+        <!--            панель с иконками-->
+                            <div class="main-content">
+                                <div class="text-editor-header border shadow-sm">
+                                    <button type="button" class="btn" data-element="bold" data-toggle="tooltip"
+                                            data-placement="bottom" title="Полужирный шрифт <strong> Ctrl+B">
+                                        <i class="fa fa-bold"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-element="italic" data-toggle="tooltip"
+                                            data-placement="bottom" title="Курсив <em> Ctrl+I">
+                                        <i class="fa fa-italic"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-element="link" data-toggle="tooltip"
+                                            data-placement="bottom" title="Гиперссылка <a> Ctrl+L">
+                                        <i class="fa fa-link"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-element="quote" data-toggle="tooltip"
+                                            data-placement="bottom" title="Цитата <blockquote> Ctrl+Q">
+                                        <i class="fa fa-quote-right"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-element="code" data-toggle="tooltip"
+                                            data-placement="bottom" title="Пример кода <pre><code> Ctrl+K">
+                                        <i class="fa fa-code"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-element="picture" data-toggle="tooltip"
+                                            data-placement="bottom" title="Изображение <img> Ctrl+G">
+                                        <i class="fa fa-picture-o"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-element="fragment-code" data-toggle="tooltip"
+                                            data-placement="bottom" title="Фрагмент кода на JavaScript/HTML/CSS Ctrl+M">
+                                        <i class="fa fa-file-code-o"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-element="number-list" data-toggle="tooltip"
+                                            data-placement="bottom" title="Нумерованный список <ol> Ctrl+O">
+                                        <i class="fa fa-list-ol"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-element="marker-list" data-toggle="tooltip"
+                                            data-placement="bottom" title="Маркированный список <ul> Ctrl+U">
+                                        <i class="fa fa-list-ul"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-element="header" data-toggle="tooltip"
+                                            data-placement="bottom" title="Заголовок <h1>/<h2> Ctrl+H">
+                                        <i class="fa fa-header"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-element="line" data-toggle="tooltip"
+                                            data-placement="bottom" title="Горизонтальная линия <hr> Ctrl+R">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-element="back" data-toggle="tooltip"
+                                            data-placement="bottom" title="Отменить - Ctrl+Z">
+                                        <i class="fa fa-undo"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-element="forward" data-toggle="tooltip"
+                                            data-placement="bottom" title="Повторить - Ctrl+Y">
+                                        <i class="fa fa-repeat"></i>
+                                    </button>
+
+                                    <button type="button" class="btn help toggle-text float-right" data-toggle="collapse"
+                                            data-target="#mycontainer" aria-expanded="false"
+                                            aria-controls="mycontainer"
+                                            data-placement="bottom">
+                                        <span>Показать подсказки форматирования</span>
+                                        <span class="hidden">Скрыть подсказки форматирования</span>
+                                    </button>
+
+                                    <div class="collapse container hints border-top" id="mycontainer">
+                                        <button type="button" class="btn toggle-text myButton" data-toggle="collapse"
+                                                data-target="#myContainerLinks" aria-expanded="false"
+                                                aria-controls="collapseLinks" data-placement="bottom">
+                                            Ссылки
+                                        </button>
+                                        <button type="button" class="btn toggle-text myButton" data-toggle="collapse"
+                                                data-target="#myContainerImages" aria-expanded="false"
+                                                aria-controls="collapseImages" data-placement="bottom">
+                                            Изображения
+                                        </button>
+                                        <button type="button" class="btn toggle-text myButton" data-toggle="collapse"
+                                                data-target="#myContainerStylesHeaders" aria-expanded="false"
+                                                aria-controls="collapseStylesHeaders" data-placement="bottom">
+                                            Стили/Заголовки
+                                        </button>
+                                        <button type="button" class="btn toggle-text myButton" data-toggle="collapse"
+                                                data-target="#myContainerLists" aria-expanded="false"
+                                                aria-controls="collapseLists" data-placement="bottom">
+                                            Списки
+                                        </button>
+                                        <button type="button" class="btn toggle-text myButton" data-toggle="collapse"
+                                                data-target="#myContainerIqtibos" aria-expanded="false"
+                                                aria-controls="collapseIqtibos" data-placement="bottom">
+                                            Цитаты
+                                        </button>
+                                        <button type="button" class="btn toggle-text myButton" data-toggle="collapse"
+                                                data-target="#myContainerCode" aria-expanded="false"
+                                                aria-controls="collapseCode" data-placement="bottom">
+                                            Код
+                                        </button>
+                                        <button type="button" class="btn toggle-text myButton" data-toggle="collapse"
+                                                data-target="#myContainerHTML" aria-expanded="false"
+                                                aria-controls="collapseHTML" data-placement="bottom">
+                                            HTML
+                                        </button>
+                                        <button type="button" class="btn toggle-text myButton" data-toggle="collapse"
+                                                data-target="#myContainerTables" aria-expanded="false"
+                                                aria-controls="collapseTables" data-placement="bottom">
+                                            Таблицы
+                                        </button>
+                                        <button type="button" class="btn btn-link"><a href="#">Ещё</a></button>
+
+                                        <div class="row">
+                                            <div class="collapse prompt w-100" id="myContainerLinks">
+                                                <div class="card card-block">
+                                                    <div class="container">
+                                                        <br>
+                                                        <p><strong>Используйте угловые скобки для принудительного создания ссылки</strong></p>
+                                                        <p class="myIndents">&lt;https://JMstackoverflow.com&gt;</p>
+                                                        <p><strong>Создать ссылку в тексте с помощью Markdown</strong></p>
+                                                        <p class="myIndents">[Текст](https://JMstackoverflow.com)</p>
+                                                        <p><strong>Добавьте атрибут alt к ссылке, добавив двойной пробел и текст после URL</strong></p>
+                                                        <p class="myIndents">[Текст](https://JMstackoverflow.com<code>&nbsp;&nbsp;
+                                                        </code>"Этот текст появится при наведении курсора")</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="collapse prompt w-100" id="myContainerImages">
+                                                <div class="card card-block">
+                                                    <div class="container">
+                                                        <br>
+                                                        <p><strong>Добавить изображение</strong></p>
+                                                        <p class="myIndents">![Текст](https://JMstackoverflow.com/image.jpg)</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="collapse prompt w-100" id="myContainerStylesHeaders">
+                                                <div class="card card-block">
+                                                    <div class="container">
+                                                        <br>
+                                                        <p><strong>Форматируйте текст, чтобы сделать ваше сообщение удобным для чтения</strong></p>
+                                                        <p class="myIndents">Перенос строки: два пробела или <code>&lt;br /&gt;</code> в конце строки</p>
+                                                        <p class="myIndents"><em>Курсив</em> *Звёздочка* или _нижнее подчёркивание_</p>
+                                                        <p class="myIndents"><strong>Полужирный:</strong> **Двойная звёздочка** или __двойное нижнее подчёркивание__</p>
+                                                        <p><strong>Создать разделы с заголовками</strong></p>
+                                                        <p class="myIndents">Большой заголовок</p>
+                                                        <p class="myIndents">=============</p>
+                                                        <p class="myIndents">Маленький подзаголовок</p>
+                                                        <p class="myIndents">--------------------------</p>
+                                                        <p><strong>Для создания заголовков разного уровня используйте знак хэш (#)</strong></p>
+                                                        <p class="myIndents"># Большой заголовок #</p>
+                                                        <p class="myIndents">## Средний заголовок ##</p>
+                                                        <p class="myIndents">### Маленький заголовок ###</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="collapse prompt w-100" id="myContainerLists">
+                                                <div class="card card-block">
+                                                    <div class="container">
+                                                        <br>
+                                                        <p><strong>Создайте маркированный или нумерованный список.</strong></p>
+                                                        <p class="myIndents">Создайте список используя знак минус -</p>
+                                                        <p class="myIndents">Или знак плюс +</p>
+                                                        <p class="myIndents">Или звёздочки *</p>
+                                                        <p class="myIndents">Или последовательные номера 1. 2. 3. ...</p>
+                                                        <p><strong>Используйте 4 или 8 пробелов для создания вложенных блоков</strong></p>
+                                                        <p class="myIndents">1. Элемент списка.</p>
+                                                        <p class="myIndents"><code>&nbsp;&nbsp;&nbsp;</code> - Пункт А, четыре пробела.</p>
+                                                        <p class="myIndents"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                                        * Пункт Б, восемь пробелов.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="collapse prompt w-100" id="myContainerIqtibos">
+                                                <div class="card card-block">
+                                                    <div class="container">
+                                                        <br>
+                                                        <p><strong>Для цитирования, добавьте символ > в начало строки</strong></p>
+                                                        <p class="myIndents">> Стандартная цитата.</p>
+                                                        <p class="myIndents">> > Цитата во вложенном блоке.</p>
+                                                        <p class="myIndents">> > > > Вы можете использовать любые уровни вложения блоков.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="collapse prompt w-100" id="myContainerCode">
+                                                <div class="card card-block">
+                                                    <div class="container">
+                                                        <br>
+                                                        <p><strong>Чтобы выделить фрагмент кода, добавьте три обратных кавычки ``` перед и после фрагмента или нажмите CTRL + K.</strong></p>
+                                                        <div class="flex flex1">
+                                                            <p class="myIndents">```</p>
+                                                            <p class="myIndents">Вот так</p>
+                                                            <p class="myIndents">```</p>
+                                                        </div>
+                                                        <p><strong>Чтобы выделить фрагмент кода в тексте используйте одиночную обратную кавычку ` в начале и в конце.</strong></p>
+                                                        <p class="myIndents"><code>`вот так`</code></p>
+                                                        <p><strong>Добавьте предформатированный блок внутри списка добавлением 8 пробелов</strong></p>
+                                                        <p class="myIndents">1. Это стандартный текст.</p>
+                                                        <p class="myIndents">2. Это элемент списка.</p>
+                                                        <p class="myIndents"><code>&nbsp;</code></p>
+                                                        <p class="myIndents"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>Пропустите строку и сделайте отступ в 8 пробелов</p>
+                                                        <p class="myIndents"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>Восемь пробелов оформят блок кода.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="collapse prompt w-100" id="myContainerHTML">
+                                                <div class="card card-block">
+                                                    <div class="container">
+                                                        <br>
+                                                        <p><strong>Используйте HTML в сочетании с Markdown<a href="#" class="link-primary"> (Что поддерживается? Примечание: мы рекомендуем не смешивать HTML и Markdown.)</a></strong></p>
+                                                        <p class="myIndents">&lt;strike&gt;Элементы разметки Markdown работают *тут* отлично.&lt;strike&gt;</p>
+                                                        <p><strong>HTML элементы в блоках имеют ограничения</strong></p>
+                                                        <p class="myIndents">1. Используйте пустые строки, чтобы отделить определённый текст от остального сообщения.</p>
+                                                        <p class="myIndents">2. Открывающие и закрывающие теги внешних элементов не должны иметь отступов.</p>
+                                                        <div class="flex flex3">
+                                                            <p>&lt;pre&gt;</p>
+                                                            <p class="myIndents">&nbsp;&nbsp;You&nbsp;&lt;em&gt;cannot&lt;/em&gt;&nbsp;use Markdown here</p>
+                                                            <p>&lt;/pre&gt;</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="collapse prompt w-100" id="myContainerTables">
+                                                <div class="card card-block">
+                                                    <div class="container">
+                                                        <br>
+                                                        <p><strong>Создавайте таблицы, используя <a href="#" class="link-primary">формат GitHub-flavored markdown</a></strong></p>
+                                                        <p class="myIndents">| Заголовок | Ещё заголовок  |</p>
+                                                        <p class="myIndents">| ------------ | ----------------- |</p>
+                                                        <p class="myIndents">| Первая &nbsp;&nbsp;&nbsp;&nbsp; | строка &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</p>
+                                                        <p class="myIndents">| Вторая &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | строка &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</p>
+                                                        <p>Строка заголовка обязательна, и за ней должна следовать строка-разделитель с таким же количеством ячеек. Ячейки разделяются символом вертикальной черты <code>(&nbsp;|&nbsp;)</code>.</p>
+                                                        <p><strong>Задайте выравнивание столбца таблицы с помощью символа <code>&nbsp;:&nbsp;</code> слева, справа или с двух сторон от разделителя в разделительной строке</strong></p>
+                                                        <p class="myIndents">| слева | по центру | справа |</p>
+                                                        <p class="myIndents">|&nbsp;:------ |&nbsp;:----------:&nbsp;| --------:&nbsp;|</p>
+                                                        <p class="myIndents">| Один | Два&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Три&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                <!--            окно для ввода текста-->
+                            <div class="input-group input-group-sm mb-1">
+                                <textarea class="input-group textarea" id="myQuestion" aria-describedby="textQuestion" rows="10" cols="20" name="usertxt" wrap="hard"></textarea>
+                            </div>
+
+                            <p class="stringUnderTable">```<code>код</code> ``` <span class="font-weight-bold">**полужирный**</span> <span class="font-italic">*курсив*</span> >цитата</p>
+                            <h6><strong>Метки</strong></h6>
+                            <div class="form-group">
+                                <div class="d-flex">
+                                    <div class="mr-auto pt-3">
+                                        <small id="labelsHelpBlock" class="form-text text-muted">
+                                            Будьте конкретны. Представьте, что вы задаёте вопрос другому человеку.
+                                        </small>
+                                    </div>
+                                    <div class="p-2">
+                                        <button type="button" class="btn btn-sm btn-light" data-toggle="modal" data-target=".bd-example-modal-sm">Подсказка</button>
+                <!--                                                модалка для кнопки "Подсказка"-->
+                                        <div class="modal fade bd-example-modal-sm" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalCenterTitle">Как ставить метки</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Метки помогают заинтересованным людям найти и ответить на ваш вопрос</p>
+                                                        <ul>
+                                                            <li>Чтобы понять какие метки необходимы, продолжите предложение "Мой вопрос о..."</li>
+                                                            <li>Используйте метки, которые являются ключевыми для вашего вопроса, например, c#</li>
+                                                            <li>Добавляйте номера версий, например c#-4.0, только когда это действительно необходимо</li>
+                                                            <li>Используйте существующие <a href="#" class="link-primary">популярные метки</a></li>
+                                                        </ul>
+                                                        <h6>Если вы не можете найти метку:</h6>
+                                                        <p><a href="#" class="link-primary">Создайте новые метки</a> или отправьте ваш вопрос без них, <a href="#" class="link-primary">попросив сообщество</a> создать метки для вас.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="email" class="form-control" id="labels" aria-describedby="labelsHelpBlock"
+                                       placeholder="например, [java с массивы]">
+                            </div>
+                            <br>
+                            <div class="row columns">
+                                <div class="col-6">
+                                    <h5>Зарегистрируйтесь или <a href="#" class="link-primary">войдите</a></h5>
+                                    <button type="button" class="btn myRegistrationButton btn-block border registration">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
+                                            <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
+                                        </svg>
+                                        <span>Регистрация через Google</span>
+                                    </button>
+                                    <br>
+                                    <button type="button" class="btn myRegistrationButton btn-block border registration">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                                        </svg>
+                                        <span>Регистрация через Facebook</span>
+                                    </button>
+                                    <br>
+                                    <button type="button" class="btn myRegistrationButton btn-block border registration">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stack-overflow" viewBox="0 0 16 16">
+                                            <path d="M12.412 14.572V10.29h1.428V16H1v-5.71h1.428v4.282h9.984z"/>
+                                            <path d="M3.857 13.145h7.137v-1.428H3.857v1.428zM10.254 0 9.108.852l4.26 5.727 1.146-.852L10.254 0zm-3.54 3.377 5.484 4.567.913-1.097L7.627 2.28l-.914 1.097zM4.922 6.55l6.47 3.013.603-1.294-6.47-3.013-.603 1.294zm-.925 3.344 6.985 1.469.294-1.398-6.985-1.468-.294 1.397z"/>
+                                        </svg>
+                                        <span>Регистрация через почту</span>
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <h5>Отправить без регистрации</h5>
+                                    <h6><strong>Имя</strong></h6>
+                                    <div class="form-group nameRegistration">
+                                        <input type="email" class="form-control" id="name-without-registration" aria-describedby="nameWithoutRegistration">
+                                    </div>
+
+                                    <h6><strong>Почта</strong></h6>
+                                        <small id="withoutRegistrationHelpBlock" class="form-text text-muted">
+                                            Необходима, но никому не показывается
+                                        </small>
+                                        <input type="email" class="form-control" id="emailWithoutRegistration" aria-describedby="withoutRegistrationHelpBlock">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="blocks col-3 mr-auto ml-3 bg-white border shadow-sm p-3 mb-5 bg-white rounded h-100" style="height: 500px;">
+                            <div class="flex border-bottom border-dark">
+                                <h6 class="font-weight-light createDraft">Шаг 1. Создайте черновик своего вопроса</h6>
+                            </div>
+                            <p>Сообщество здесь, чтобы помочь вам с конкретными проблемами по программированию, алгоритмам, языкам программирования.</p>
+                            <p>Избегайте публикации вопросов, на которые невозможно дать объективный ответ.</p>
+                            <div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="headingTwo1">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo1"
+                                           aria-expanded="false" aria-controls="collapseTwo1">
+                                            <strong>1.</strong> Опишите проблему кратко
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div id="collapseTwo1" class="collapse" role="tabpanel" aria-labelledby="headingTwo1"
+                                         data-parent="#accordionEx1">
+                                        <div class="card-body">
+                                            <ul>
+                                                <li>Включите подробную информацию о вашей цели</li>
+                                                <li>Опишите, что вы ожидали и что получили</li>
+                                                <li>Добавьте сообщения об ошибках</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="headingTwo2">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo21"
+                                           aria-expanded="false" aria-controls="collapseTwo21">
+                                            <strong>2.</strong> Опишите, что вы пробовали
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div id="collapseTwo21" class="collapse" role="tabpanel" aria-labelledby="headingTwo21"
+                                         data-parent="#accordionEx1">
+                                        <div class="card-body">
+                                            Покажите, что вы пробовали, что вы нашли (на этом сайте или в другом месте), и почему это не решает вашу проблему. Вы можете получить лучшие ответы, когда продемонстрируете ваше исследование.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="headingThree31">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseThree31"
+                                           aria-expanded="false" aria-controls="collapseThree31">
+                                            <strong>3.</strong> Добавьте немного кода
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div id="collapseThree31" class="collapse" role="tabpanel" aria-labelledby="headingThree31"
+                                         data-parent="#accordionEx1">
+                                        <div class="card-body">
+                                            По возможности добавьте минимальный код, необходимый для воспроизведения вашей проблемы (так называемый <a href="#" class="link-primary">минимальный воспроизводимый пример</a>)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row space border-0">
+                                <br>
+                            </div>
+                            <div class="accordion md-accordion" id="moreLinks" role="tablist" aria-multiselectable="true">
+                                <div class="flex border-bottom border-dark"></div>
+                                <div class="card">
+                                    <div class="card-header test" role="tab" id="moreUsefulLinks">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#moreLinks" href="#collapseMoreUsefulLinks"
+                                           aria-expanded="false" aria-controls="collapseMoreUsefulLinks">
+                                            Больше полезных ссылок
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div id="collapseMoreUsefulLinks" class="collapse" role="tabpanel" aria-labelledby="moreUsefulLinks"
+                                         data-parent="#moreLinks">
+                                        <div class="card-body">
+                                            <p>Подробнее о том, <a href="#" class="link-primary">как задать качественный вопрос</a>.</p>
+                                            <p>Посетите <a href="#" class="link-primary">справочный центр</a>.</p>
+                                            <p>Вопросы о правилах и работе сайта можно задать на <a href="#" class="link-primary">Мете</a>.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="blocks col-8 ml-auto mr-3 h-100" style="height: 100px;">
+                             <button type="button" class="btn btn-primary checkRequest checkButton">Проверьте ваш вопрос</button>
+                        </div>
+                        <div class="blocks col-3 mr-auto ml-3 h-100" style="height: 100px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--модалка при открытии страницы-->
+<div class="modal fade bd-example-modal-sm" id="modalOpeningPage" tabindex="-1" role="dialog" aria-labelledby="modalOpeningPageTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalOpeningPageTitle">Задавая хороший вопрос</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Теперь вы готовы задать ваш первый вопрос, связанный с программированием.
+                    Ведь наше сообщество именно для этого! Чтобы получить лучшие ответы,
+                    взгляните на рекомендации:</p>
+                <p>Перед публикацией <a href="#" class="link-primary">воспользуйтесь поиском по сайту</a>, чтобы убедиться,
+                    что на ваш вопрос ещё не был дан ответ.</p>
+                <p><strong><a class="text-primary">1.</a></strong> Опишите проблему кратко</p>
+                <p><strong><a class="text-primary">2.</a></strong> Опишите, что вы пробовали</p>
+                <p><strong><a class="text-primary">3.</a></strong> При необходимости добавьте немного кода</p>
+                <p class="text-secondary">Больше советов в боковой панели.</p>
+                <button type="button" class="btn btn-primary" style="display: block; margin-right: auto;">Начать писать</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+<!--изменение текста кнопки "Показать подсказки форматирования" при нажатии на нее-->
+<script>
+    $('.hidden').removeClass('hidden').hide();
+    $('.toggle-text').click(function() {
+        $(this).find('span').each(function() {$(this).toggle();});
+    });
+</script>
+
+<!--загрузка модалки при открытии страницы-->
+<script>
+    $(document).ready(function() {
+        $("#modalOpeningPage").modal('show');
+    });
+</script>
+
+<!--переключение вкладок с подсказками-->
+<script>
+    $(document).ready(function(){
+    $('.myButton').on('click',function(){
+        $('.prompt').collapse('hide');
+        })
+    })
+</script>
+
+</body>
+</html>
