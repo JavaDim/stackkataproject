@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Профиль</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+
+    <script type="text/javascript" src="/js/sidebar.js"></script>
+    <script type="text/javascript" src="/js/header.js"></script>
+    <script type="text/javascript" src="/js/footer.js"></script>
+
+</head>
+
+<body>
+<main class="container">
+    <div class="row">
+        <div class="col-md-auto align-self-center">
+            <img src="/static/images/ЗмейГорыныч.png" class="img-fluid rounded" alt="Аватарка" width="128" height="128">
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col-auto ml-auto my-3">
+                    <button type="button" class="btn btn-outline-secondary" href="#">Редактировать профиль</button>
+                    <button type="button" class="btn btn-outline-secondary" href="#">Сетевой профиль</button>
+                </div>
+            </div>
+            <div class="row">
+                <h2>Имя пользователя</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-auto">
+                    <small><p class="text-black-50">Дата регистрации</p></small>
+                </div>
+                <div class="col-md-auto">
+                    <small><p class="text-black-50">Дата последнего посещения</p></small>
+                </div>
+                <div class="col-md-auto">
+                    <small><p class="text-black-50">Счетчик дней после регистрации</p></small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ml-1 mt-1 mb-1">
+        <div class="nav nav-pills">
+            <div class="nav-item">
+                <a class="nav-link active" href="/profile">Профиль</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" href="#">Активность</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" href="#">Настройки</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 mt-2">
+            <h4>Статистика</h4>
+            <div class="card mt-2">
+                <div class="bg-white card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div>
+                                <h5>0</h5>
+                            </div>
+                            <div>
+                                <small>Репутация</small>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <h5>0</h5>
+                            </div>
+                            <div>
+                                <small>Затронуто</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div>
+                                <h5>0</h5>
+                            </div>
+                            <div>
+                                <small>Ответов</small>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <h5>0</h5>
+                            </div>
+                            <div>
+                                <small>Вопросов</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row justify-content-between">
+                    <div class="col-md-auto mt-2">
+                        <h4>Сообщества</h4>
+                    </div>
+                    <div class="col-md-auto my-auto">
+                        <small><a title="Редактировать список отображаемых сообществ." href="#">Править</a></small>
+                    </div>
+                </div>
+                <div class="card mt-2">
+                    <div class="bg-white card-body">
+                        список сообществ
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9 mt-2">
+            <h4>Обо мне</h4>
+            <div class=" card mt-2 mb-2">
+                <div class="bg-light card-body">
+                    У вас не заполнена секция «Обо мне». Хотите заполнить?
+                    <a href="#">Редактировать профиль</a>
+                </div>
+            </div>
+            <h4>Знаки</h4>
+            <div class="card mt-2 mb-2">
+                <div class="bg-light card-body">
+                    У вас пока нет ни одного
+                    <a href="#">знака</a>.
+                </div>
+            </div>
+            <h4>Сообщения</h4>
+            <div class=" bg-light card mt-2">
+                <div class="card-body">
+                    Впервые здесь? Попробуйте ответить на вопрос!
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
