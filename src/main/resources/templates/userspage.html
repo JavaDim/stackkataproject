@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Метки</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <link th:href="@{/css/userspage.css}" rel="stylesheet">
+</head>
+<body>
+
+<main class="container">
+    <section class="p-3 p-md-4 content">
+        <h1 class="mb-4 h3 fw-normal">Участники</h1>
+
+        <div class="d-flex flex-wrap justify-content-between">
+            <label class="mb-3 position-relative">
+                <input class="form-control input-filter" autocomplete="off" type="text" maxlength="35" placeholder="Фильтрация по участнику" autofocus>
+                <svg aria-hidden="true" class="icon-search" width="18" height="18" viewBox="0 0 18 18" fill="#cccccc"><path d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z"></path></svg>
+            </label>
+
+            <div class="mb-3 btn-group ms-auto" role="group" aria-label="filter-buttons">
+                <button type="button" class="btn btn-filter btn-filter-active">Репутация</button>
+                <button type="button" class="btn btn-filter">Новые</button>
+                <button type="button" class="btn btn-filter">Голосующие</button>
+                <button type="button" class="btn btn-filter">Редакторы</button>
+                <button type="button" class="btn btn-filter">Модераторы</button>
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="mb-3 btn-group ms-auto" role="group" aria-label="time-filter">
+                <button type="button" class="btn btn-time-filter active">за неделю</button>
+                <button type="button" class="btn btn-time-filter">за месяц</button>
+                <button type="button" class="btn btn-time-filter">квартал</button>
+                <button type="button" class="btn btn-time-filter">год</button>
+                <button type="button" class="btn btn-time-filter">все</button>
+            </div>
+        </div>
+
+        <div class="user-list">
+            <div class="user-card">
+                <img class="user-avatar" th:src="@{/images/АлешаПопович.png}" alt="">
+                <div class="user-details">
+                    <a class="user-name" href="#">Алеша Попович</a>
+                    <p class="user-location">Ростов</p>
+                    <p class="user-reputation">575</p>
+                </div>
+                <div class="user-tags">
+                    <a href="#">strength</a>,
+                    <a href="#">stupidity</a>
+                </div>
+            </div>
+            <div class="user-card">
+                <img class="user-avatar" src="https://i.stack.imgur.com/RE07t.jpg?s=96&g=1" alt="">
+                <div class="user-details">
+                    <a class="user-name" href="#">Stanislav Volodarskiy</a>
+                    <p class="user-location">Санкт-Петербург, Россия</p>
+                    <p class="user-reputation">130</p>
+                </div>
+                <div class="user-tags">
+                    <a href="#">python</a>,
+                    <a href="#">бот</a>,
+                    <a href="#">list</a>
+                </div>
+            </div>
+            <div class="user-card">
+                <img class="user-avatar" src="https://www.gravatar.com/avatar/2748e7e54c12fa7da407df6e85fe2b6d?s=96&d=identicon&r=PG" alt="">
+                <div class="user-details">
+                    <a class="user-name" href="#">EzioMercer</a>
+                    <p class="user-location">Montenegro</p>
+                    <p class="user-reputation">121</p>
+                </div>
+                <div class="user-tags">
+                    <a href="#">javascript</a>,
+                    <a href="#">css</a>,
+                    <a href="#">html</a>
+                </div>
+            </div>
+            <div class="user-card">
+                <img class="user-avatar" src="https://i.stack.imgur.com/5oQlf.png?s=96&g=1" alt="">
+                <div class="user-details">
+                    <a class="user-name" href="#">HolyBlackCat</a>
+                    <p class="user-location">Earth</p>
+                    <p class="user-reputation">90</p>
+                </div>
+                <div class="user-tags">
+                    <a href="#">c++</a>,
+                    <a href="#">ооп</a>,
+                    <a href="#">шаблоны-с++</a>
+                </div>
+            </div>
+            <div class="user-card">
+                <img class="user-avatar" src="https://www.gravatar.com/avatar/eac6c5555d5e72e2b4f2f2253e4579e2?s=96&d=identicon&r=PG" alt="">
+                <div class="user-details">
+                    <a class="user-name" href="#">eri</a>
+                    <p class="user-location">Russia</p>
+                    <p class="user-reputation">75</p>
+                </div>
+                <div class="user-tags">
+                    <a href="#">python</a>,
+                    <a href="#">python-3.x</a>,
+                    <a href="#">cmd</a>
+                </div>
+            </div>
+            <div class="user-card">
+                <img class="user-avatar" src="https://i.stack.imgur.com/LgbNe.jpg?s=96&g=1" alt="">
+                <div class="user-details">
+                    <a class="user-name" href="#">Alexandr_TT</a>
+                    <p class="user-location">Екатеринбург, Россия</p>
+                    <p class="user-reputation">70</p>
+                </div>
+                <div class="user-tags">
+                    <a href="#">css</a>,
+                    <a href="#">html</a>,
+                    <a href="#">css3</a>
+                </div>
+            </div>
+            <div class="user-card">
+                <img class="user-avatar" src="https://www.gravatar.com/avatar/2e67913eeed7bcac6e804dc95fd220cc?s=96&d=identicon&r=PG" alt="">
+                <div class="user-details">
+                    <a class="user-name" href="#">Сергей</a>
+                    <p class="user-location">Россия</p>
+                    <p class="user-reputation">65</p>
+                </div>
+                <div class="user-tags">
+                    <a href="#">python</a>,
+                    <a href="#">рекурсия</a>
+                </div>
+            </div>
+            <div class="user-card">
+                <img class="user-avatar" src="https://www.gravatar.com/avatar/87aed06c947625b429242fbcdf11f5e0?s=96&d=identicon&r=PG&f=1" alt="">
+                <div class="user-details">
+                    <a class="user-name" href="#">Alexander Petrov</a>
+                    <p class="user-location"></p>
+                    <p class="user-reputation">60</p>
+                </div>
+                <div class="user-tags">
+                    <a href="#">c#</a>,
+                    <a href="#">postgresql</a>,
+                    <a href="#">регулярные-выражения</a>
+                </div>
+            </div>
+        </div>
+
+        <nav aria-label="pagination">
+            <ul class="pagination justify-content-end">
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                <li class="page-item"><a class="page-link" href="#">8258</a></li>
+                <li class="page-item"><a class="page-link" href="#">Далее</a></li>
+            </ul>
+
+            <a class="users-legend" href="#">Зал славы за неделю/месяц/квартал</a>
+        </nav>
+    </section>
+</main>
+
+<script type="text/javascript" src="/js/sidebar.js"></script>
+<script type="text/javascript" src="/js/header.js"></script>
+<script type="text/javascript" src="/js/footer.js"></script>
+
+</body>
+</html>
