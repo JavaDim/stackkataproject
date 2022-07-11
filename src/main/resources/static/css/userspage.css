@@ -1,0 +1,198 @@
+body > main.container {
+    padding: 0;
+    max-width: 1264px;
+}
+
+.content {
+    margin: 0 auto 0;
+    max-width: 1100px;
+}
+
+.page-description {
+    max-width: 630px;
+    font-size: 15px;
+}
+
+a {
+    font-size: 13px;
+}
+
+.input-filter {
+    padding: 8px 9px 8px 32px;
+    font-size: 13px;
+}
+
+.icon-search {
+    position: absolute;
+    top: 50%;
+    left: 0.5em;
+    margin-top: -9px;
+    color: hsl(210,8%,75%);
+}
+
+.btn-filter {
+    --bs-btn-font-size: 13px;
+    --bs-btn-color: rgb(106, 115, 124);
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: rgb(159, 166, 173);
+    --bs-btn-border-radius: 3px;
+    --bs-btn-hover-border-color: rgb(159, 166, 173);
+    --bs-btn-hover-color: hsl(210,8%,35%);
+    --bs-btn-hover-bg: hsl(210,8%,97.5%);
+    --bs-btn-active-color: rgb(59, 64, 69);
+    --bs-btn-active-bg: hsl(210,8%,97.5%);
+    --bs-btn-active-border-color: hsl(210,8%,55%);
+}
+
+.btn-filter-active {
+    --bs-btn-color: rgb(59, 64, 69);
+    --bs-btn-bg: rgb(227, 230, 232);
+    --bs-btn-border-color: hsl(210deg 8% 55%);
+    --bs-btn-hover-border-color: hsl(210deg 8% 55%);
+    --bs-btn-hover-color: rgb(59, 64, 69);
+    --bs-btn-hover-bg: rgb(227, 230, 232);
+    --bs-btn-active-bg: rgb(227, 230, 232);
+    --bs-btn-active-border-color: hsl(210,8%,55%);
+}
+
+.btn-time-filter {
+    --bs-btn-padding-x: 8px;
+    --bs-btn-padding-y: 8px;
+    --bs-btn-font-family: inherit;
+    --bs-btn-font-size: 12px;
+    --bs-btn-font-weight: 400;
+    --bs-btn-line-height: 23px;
+    --bs-btn-color: rgb(106, 115, 124);
+    --bs-btn-bg: transparent;
+    --bs-btn-border-width: 1px;
+    --bs-btn-border-color: transparent;
+    --bs-btn-border-radius: 0;
+    /*--bs-btn-box-shadow: #{$btn-box-shadow};*/
+    /*--bs-btn-disabled-opacity: #{$btn-disabled-opacity};*/
+    /*--bs-btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--bs-btn-focus-shadow-rgb), .5);*/
+
+    --bs-btn-hover-border-color: transparent;
+
+    --bs-btn-active-border-color: transparent;
+}
+
+.btn-time-filter:hover {
+    border-bottom-color: rgb(244 130 37);
+}
+
+.btn-time-filter[class*="active"] {
+    border-bottom-color: rgb(244 130 37);
+    font-weight: bold;
+}
+
+.btn-time-filter:not(:last-child) {
+    margin-right: 3px;
+}
+
+.btn-time-filter-active {}
+
+.user-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+.user-card {
+    border-radius: 3px;
+    padding: 6px;
+}
+
+.user-avatar {
+    float: left;
+    border-radius: 3px;
+    width: 48px;
+    height: 48px;
+}
+
+.user-details {
+    float: left;
+    margin: 0 0 0 9px;
+}
+
+.user-name {
+    display: block;
+    font-size: 15px;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.user-location {
+    margin-bottom: 2px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgb(106 115 124);
+}
+
+.user-reputation {
+    margin: 0 0 4px 0;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 1;
+    color: rgb(106 115 124);
+}
+
+.user-tags {
+    clear: both;
+    margin: 0 0 0 57px;
+    line-height: 1;
+}
+
+.user-tags > a {
+    font-size: 12px;
+    text-decoration: none;
+    color: rgb(0 116 204);
+}
+
+.pagination {
+    --bs-pagination-padding-x: 10px;
+    --bs-pagination-padding-y: 0;
+    --bs-pagination-font-size: 13px;
+    --bs-pagination-color: black;
+    --bs-pagination-bg: transparent;
+    --bs-pagination-border-width: 1px;
+    --bs-pagination-border-color: rgb(214, 217, 220);
+    --bs-pagination-border-radius: 3px;
+    --bs-pagination-hover-color: black;
+    --bs-pagination-hover-bg: rgb(214, 217, 220);
+    --bs-pagination-hover-border-color: rgb(186, 191, 196);
+    --bs-pagination-active-color: white;
+    --bs-pagination-active-bg: rgb(244, 130, 37);
+    --bs-pagination-active-border-color: transparent;
+    --bs-pagination-disabled-color: black;
+    --bs-pagination-disabled-bg: transparent;
+    --bs-pagination-disabled-border-color: transparent;
+
+    float: right;
+    margin: 20px 0;
+    line-height: 25px;
+}
+
+.users-legend {
+    float: left;
+    margin: 24px 0 10px;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(0 116 204);
+}
+
+@media screen and (max-width: 1264px) {
+    .user-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media screen and (max-width: 980px) {
+    .user-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media screen and (max-width: 640px) {
+    .user-list {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
