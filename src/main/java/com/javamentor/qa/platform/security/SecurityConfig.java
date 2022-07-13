@@ -12,6 +12,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
+    private final SuccessUserHandler successUserHandler;
+
+    public SecurityConfig(SuccessUserHandler successUserHandler) {
+        this.successUserHandler = successUserHandler;
+    }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -19,11 +24,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
         filter.setEncoding("UTF-8");
         filter.setForceEncoding(true);
         http.csrf().disable();
-        http.cors();
-        http.authorizeRequests()
-                .antMatchers("/**").permitAll();
+        http.cors().disable();
+        http
+                .authorizeRequests()
+                    .antMatchers("/**").permitAll()
+                    .antMatchers("/api/user/**").hasRole("USER")
+                .and()
+                    .formLogin()
+                    .loginPage("/login")
+                    .successHandler(successUserHandler)
+                    .permitAll()
+                .and()
+                    .logout()
+                    .permitAll();
     }
-
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
