@@ -1,14 +1,13 @@
 package com.javamentor.qa.platform.service.impl;
 
-import com.javamentor.qa.platform.models.entity.question.CommentQuestion;
-import com.javamentor.qa.platform.models.entity.question.Question;
-import com.javamentor.qa.platform.models.entity.question.Tag;
-import com.javamentor.qa.platform.models.entity.question.VoteQuestion;
-import com.javamentor.qa.platform.models.entity.question.VoteTypeQ;
+import com.javamentor.qa.platform.models.entity.question.*;
 import com.javamentor.qa.platform.models.entity.question.answer.Answer;
 import com.javamentor.qa.platform.models.entity.user.Role;
 import com.javamentor.qa.platform.models.entity.user.User;
 import com.javamentor.qa.platform.models.entity.user.UserFavoriteQuestion;
+import com.javamentor.qa.platform.service.abstracts.model.AnswerService;
+import com.javamentor.qa.platform.service.abstracts.model.QuestionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,12 +15,21 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class TestDataInitService {
 
     @PersistenceContext
     private EntityManager entityManager;
+    private final QuestionService questionService;
+    private final AnswerService answerService;
+
+    @Autowired
+    public TestDataInitService(QuestionService questionService, AnswerService answerService) {
+        this.questionService = questionService;
+        this.answerService = answerService;
+    }
 
     @Transactional
     public void createEntity() {
@@ -49,6 +57,7 @@ public class TestDataInitService {
         entityManager.persist(role_user);
         entityManager.persist(admin);
     }
+
     @Transactional
     public void createTags() {
         Tag java = new Tag(
@@ -122,6 +131,39 @@ public class TestDataInitService {
         entityManager.persist(userOne);
         entityManager.persist(questionOne);
         entityManager.persist(voteQuestion);
+    }
+
+    public void createQuestions(User user, List<Tag> tags, int count) {
+
+        List<Question> questions = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            Question question = new Question();
+            question.setTitle(user.getNickname() + "'s question");
+            question.setDescription("Asked by " + user.getFullName());
+            question.setTags(tags);
+            question.setUser(user);
+            questions.add(question);
+        }
+
+        questionService.persistAll(questions);
+    }
+
+    public void createAnswers(User answerer, List<Question> questions) {
+
+        List<Answer> answers = new ArrayList<>();
+        for (Question question : questions) {
+            Answer answer = new Answer();
+            answer.setUser(answerer);
+            answer.setQuestion(question);
+            answer.setHtmlBody("Answer to " + question.getTitle());
+            answer.setIsHelpful(false);
+            answer.setIsDeleted(false);
+            answer.setIsDeletedByModerator(false);
+
+            answers.add(answer);
+        }
+
+        answerService.persistAll(answers);
     }
 }
 
