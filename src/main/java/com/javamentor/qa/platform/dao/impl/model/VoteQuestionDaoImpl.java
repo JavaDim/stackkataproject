@@ -13,8 +13,7 @@ import javax.persistence.TypedQuery;
 import java.util.Optional;
 
 @Repository
-public class VoteQuestionDaoImpl extends ReadWriteDaoImpl<VoteQuestion, Long>
-        implements VoteQuestionDao {
+public class VoteQuestionDaoImpl extends ReadWriteDaoImpl<VoteQuestion, Long> implements VoteQuestionDao {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -37,9 +36,10 @@ public class VoteQuestionDaoImpl extends ReadWriteDaoImpl<VoteQuestion, Long>
     public Long getSumVoteQuestion(Question question) {
         TypedQuery<Long> questionTypedQuery = entityManager
                 .createQuery("""
-                        SELECT nullif(SUM (VoteQuestion.vote), 0)
-                        FROM VoteQuestion v
-                        WHERE v.question.id=:questionId
+                        SELECT COALESCE(SUM (CASE WHEN
+                        CASE WHEN vq.voteTypeQ = 'UP' THEN 1 WHEN vq.voteTypeQ = 'DOWN' THEN -1 END), 0) 
+                        FROM VoteQuestion vq
+                        WHERE vq.question.id=:questionId
                         """, Long.class)
                 .setParameter("questionId", question.getId());
 

@@ -10,6 +10,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -43,12 +45,13 @@ public class VoteQuestion implements Serializable {
     @Type(type = "org.hibernate.type.LocalDateTimeType")
     private LocalDateTime localDateTime = LocalDateTime.now();
 
-    private int vote;
+    @Enumerated(EnumType.STRING)
+    private VoteTypeQ voteTypeQ;
 
-    public VoteQuestion(User user, Question question, int vote) {
+    public VoteQuestion(User user, Question question, VoteTypeQ voteTypeQ) {
         this.user = user;
         this.question = question;
-        this.vote = vote;
+        this.voteTypeQ = voteTypeQ;
     }
     @PrePersist
     private void prePersistFunction() {
@@ -56,7 +59,7 @@ public class VoteQuestion implements Serializable {
     }
 
     private void checkConstraints() {
-        if (vote != 1 && vote != -1) {
+        if (voteTypeQ.equals(VoteTypeQ.UP) && voteTypeQ.equals(VoteTypeQ.DOWN)) {
             throw new ConstrainException("В сущности VoteQuestion допускается передача значения в поле vote только 1 или -1");
         }
     }

@@ -4,6 +4,7 @@ import com.javamentor.qa.platform.models.entity.question.CommentQuestion;
 import com.javamentor.qa.platform.models.entity.question.Question;
 import com.javamentor.qa.platform.models.entity.question.Tag;
 import com.javamentor.qa.platform.models.entity.question.VoteQuestion;
+import com.javamentor.qa.platform.models.entity.question.VoteTypeQ;
 import com.javamentor.qa.platform.models.entity.question.answer.Answer;
 import com.javamentor.qa.platform.models.entity.user.Role;
 import com.javamentor.qa.platform.models.entity.user.User;
@@ -116,7 +117,7 @@ public class TestDataInitService {
                 userOne,
                 questionOne,
                 LocalDateTime.now(),
-                1);
+                VoteTypeQ.UP);
 
         entityManager.persist(userOne);
         entityManager.persist(questionOne);
