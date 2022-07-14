@@ -1,9 +1,13 @@
 package com.javamentor.qa.platform.service.impl;
 
+import com.javamentor.qa.platform.models.entity.question.CommentQuestion;
 import com.javamentor.qa.platform.models.entity.question.Question;
 import com.javamentor.qa.platform.models.entity.question.Tag;
+import com.javamentor.qa.platform.models.entity.question.VoteQuestion;
+import com.javamentor.qa.platform.models.entity.question.answer.Answer;
 import com.javamentor.qa.platform.models.entity.user.Role;
 import com.javamentor.qa.platform.models.entity.user.User;
+import com.javamentor.qa.platform.models.entity.user.UserFavoriteQuestion;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -68,6 +72,55 @@ public class TestDataInitService {
         entityManager.persist(java);
         entityManager.persist(javascript);
         entityManager.persist(python);
+    }
+
+    @Transactional
+    public void createVotes() {
+        Role roleUserOne = entityManager
+                .createQuery("SELECT r FROM Role r WHERE r.name = 'ROLE_USER'", Role.class)
+                .getSingleResult();
+
+        User userOne = new User(
+                2L,
+                "userOne@mail.ru",
+                "userOne",
+                "userOne",
+                LocalDateTime.now(),
+                true,
+                false,
+                "cityOne",
+                "https://www.userone.ru",
+                "https://github.com",
+                "https://vk.com",
+                "aboutUserOne",
+                "imageUserOne link",
+                LocalDateTime.now(),
+                "userOne",
+                roleUserOne);
+
+        Question questionOne = new Question(1L,
+                "questionOne",
+                "descriptionQuestionOne",
+                LocalDateTime.now(),
+                userOne,
+                new ArrayList<Tag>(),
+                LocalDateTime.now(),
+                false,
+                new ArrayList<Answer>(),
+                new ArrayList<CommentQuestion>(),
+                new ArrayList<UserFavoriteQuestion>(),
+                new ArrayList<VoteQuestion>());
+
+        VoteQuestion voteQuestion = new VoteQuestion(
+                1L,
+                userOne,
+                questionOne,
+                LocalDateTime.now(),
+                1);
+
+        entityManager.persist(userOne);
+        entityManager.persist(questionOne);
+        entityManager.persist(voteQuestion);
     }
 }
 
