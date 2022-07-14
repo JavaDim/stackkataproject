@@ -17,7 +17,7 @@ public abstract class ReadOnlyDaoImpl<E, K> {
             .getActualTypeArguments()[0];
 
     @PersistenceContext
-    protected EntityManager entityManager;
+    private EntityManager entityManager;
 
     public List<E> getAll() {
         return entityManager.createQuery("from " + clazz.getName(), clazz).getResultList();
