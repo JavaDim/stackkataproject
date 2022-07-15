@@ -10,6 +10,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -40,12 +42,12 @@ public class VoteAnswer {
     @Type(type = "org.hibernate.type.LocalDateTimeType")
     private LocalDateTime persistDateTime;
 
-    @Column
-    private Integer vote;
+    @Enumerated(EnumType.STRING)
+    private VoteType voteType;
 
-    public VoteAnswer(User user, Answer answer, int vote) {
+    public VoteAnswer(User user, Answer answer, VoteType voteType) {
         this.user = user;
         this.answer = answer;
-        this.vote = vote;
+        this.voteType = voteType;
     }
 }

@@ -7,6 +7,4 @@ import java.util.Optional;
 public interface AnswerService extends ReadWriteService<Answer, Long> {
 
     Optional<Answer> getAnswerForVote(Long answerId, Long userId);
-
-    void updateAnswerSpecial(Long answerId);
 }

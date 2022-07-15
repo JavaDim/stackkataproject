@@ -19,30 +19,26 @@ public class AnswerDaoImpl extends ReadWriteDaoImpl<Answer, Long> implements Ans
     @Override
     public Optional<Answer> getAnswerForVote(Long answerId, Long userId) {
         return SingleResultUtil.getSingleResultOrNull(entityManager.createQuery("""
-                        select a from Answer a
-                        where a.id = :answerId
-                        and not exists (
-                            select v from VoteAnswer v
-                            where v.answer.id = :answerId and v.user.id = :userId
-                        )
+                        SELECT a
+                        FROM Answer a
+                        WHERE a.id = :answerId
+                        AND NOT a.user.id = :userId
                         """, Answer.class)
                 .setParameter("answerId", answerId)
                 .setParameter("userId", userId));
     }
 
     @Override
-    public void updateAnswerSpecial(Long answerId) {
-        LocalDateTime currentTime = LocalDateTime.now();
+    public void updateAnswerSpecial(Answer answer) {
         entityManager.createQuery("""
-                        update Answer as a
-                        set a.isHelpful = true,
-                            a.dateAcceptTime = :acceptDateTime,
-                            a.updateDateTime = :updateDateTime
-                        where a.id = :id
+                        UPDATE Answer a
+                        SET a.htmlBody = :body,
+                            a.updateDateTime = :time
+                        WHERE a.id = :id
                         """)
-                .setParameter("acceptDateTime", currentTime)
-                .setParameter("updateDateTime", currentTime)
-                .setParameter("id", answerId)
+                .setParameter("body", answer.getHtmlBody())
+                .setParameter("time", LocalDateTime.now())
+                .setParameter("id", answer.getId())
                 .executeUpdate();
     }
 }

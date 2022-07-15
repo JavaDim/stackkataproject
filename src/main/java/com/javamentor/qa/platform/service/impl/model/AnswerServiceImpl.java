@@ -24,9 +24,4 @@ public class AnswerServiceImpl extends ReadWriteServiceImpl<Answer, Long> implem
     public Optional<Answer> getAnswerForVote(Long answerId, Long userId) {
         return answerDao.getAnswerForVote(answerId, userId);
     }
-
-    @Override
-    public void updateAnswerSpecial(Long answerId) {
-        answerDao.updateAnswerSpecial(answerId);
-    }
 }

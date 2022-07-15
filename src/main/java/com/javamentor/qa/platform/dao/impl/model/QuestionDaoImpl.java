@@ -16,11 +16,11 @@ public class QuestionDaoImpl extends ReadWriteDaoImpl<Question, Long> implements
 
     @Override
     public long getCountQuestion() {
-        return SingleResultUtil.getSingleResultOrNull(entityManager.createQuery("""
+        return entityManager.createQuery("""
                         SELECT COUNT(q)
                         FROM Question q
                         WHERE q.isDeleted = false
-                        """, Long.class))
-                .orElse(-1L);
+                        """, Long.class)
+                .getSingleResult();
     }
 }
