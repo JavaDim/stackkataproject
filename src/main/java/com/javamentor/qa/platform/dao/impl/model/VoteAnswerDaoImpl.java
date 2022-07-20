@@ -2,7 +2,6 @@ package com.javamentor.qa.platform.dao.impl.model;
 
 import com.javamentor.qa.platform.dao.abstracts.model.VoteAnswerDao;
 import com.javamentor.qa.platform.dao.util.SingleResultUtil;
-import com.javamentor.qa.platform.models.entity.question.Question;
 import com.javamentor.qa.platform.models.entity.question.answer.VoteAnswer;
 
 import javax.persistence.EntityManager;
@@ -18,8 +17,8 @@ public class VoteAnswerDaoImpl extends ReadWriteDaoImpl<VoteAnswer, Long> implem
     @Override
     public Long sumVote(Long answerId) {
         TypedQuery<Long> typedQuery = entityManager.createQuery("""
-                        SELECT COALESCE(SUM (CASE WHEN
-                        CASE WHEN va.voteType = 'UP' THEN 1 WHEN va.voteType = 'DOWN' THEN -1 END), 0)
+                        SELECT COUNT (va.voteType)
+                        AS count
                         FROM VoteAnswer va
                         WHERE va.answer.id = :answerId
                         """, Long.class)

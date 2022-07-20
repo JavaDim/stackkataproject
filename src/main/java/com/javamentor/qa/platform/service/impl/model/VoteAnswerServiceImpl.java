@@ -10,16 +10,10 @@ import com.javamentor.qa.platform.models.entity.user.reputation.Reputation;
 import com.javamentor.qa.platform.models.entity.user.reputation.ReputationType;
 import com.javamentor.qa.platform.service.abstracts.model.VoteAnswerService;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-
 public class VoteAnswerServiceImpl extends ReadWriteServiceImpl<VoteAnswer, Long> implements VoteAnswerService {
-
-    @PersistenceContext
-    private EntityManager entityManager;
 
     private final VoteAnswerDao voteAnswerDao;
     private final ReputationDao reputationDao;
@@ -30,42 +24,33 @@ public class VoteAnswerServiceImpl extends ReadWriteServiceImpl<VoteAnswer, Long
         this.reputationDao = reputationDao;
     }
 
-    @Override
-    public Long vote(Answer answer, User user, Integer repCount, VoteType voteType) {
-        Optional<VoteAnswer> voteAnswerFromDb = voteAnswerDao.getByAnswerIdAndUserId(answer.getId(), user.getId());
-        Optional<Reputation> reputationFromDb = reputationDao.getByAnswerIdSenderId(answer.getId(), user.getId());
-
+    private Long vote(Answer answer, User user, int repCount, VoteType voteType) {
+        Optional<VoteAnswer> voteAnswerOptional = voteAnswerDao.getByAnswerIdAndUserId(answer.getId(), user.getId());
+        Optional<Reputation> reputationOptional = reputationDao.getByAnswerIdSenderId(answer.getId(), user.getId());
         VoteAnswer voteAnswer;
-        Reputation reputation = new Reputation();
-
-        if (voteAnswerFromDb.isPresent() && reputationFromDb.isPresent()) {
-            voteAnswer = new VoteAnswer();
-            voteAnswer.setId(voteAnswerFromDb.get().getId());
-            voteAnswer.setUser(voteAnswerFromDb.get().getUser());
-            voteAnswer.setAnswer(voteAnswerFromDb.get().getAnswer());
-            voteAnswer.setPersistDateTime(LocalDateTime.now());
-            voteAnswer.setVoteType(voteType);
-            entityManager.merge(voteAnswer);
-            reputation.setId(reputationFromDb.get().getId());
-            reputation.setPersistDate(reputationFromDb.get().getPersistDate());
-            reputation.setAuthor(reputationFromDb.get().getAuthor());
-            reputation.setSender(reputationFromDb.get().getSender());
-            reputation.setCount(repCount);
-            reputation.setType(ReputationType.Answer);
-            reputation.setQuestion(reputationFromDb.get().getQuestion());
-            reputation.setAnswer(reputationFromDb.get().getAnswer());
-            entityManager.merge(reputation);
+        Reputation reputation;
+        if (voteAnswerOptional.isPresent() && reputationOptional.isPresent()) {
+            voteAnswer = voteAnswerOptional.get();
+            reputation = reputationOptional.get();
         } else {
-            voteAnswer = new VoteAnswer(user,answer,voteType);
-            entityManager.persist(voteAnswer);
-            reputation.setPersistDate(LocalDateTime.now());
-            reputation.setAuthor(answer.getUser());
-            reputation.setSender(user);
-            reputation.setCount(repCount);
-            reputation.setType(ReputationType.Answer);
-            reputation.setQuestion(answer.getQuestion());
-            reputation.setAnswer(answer);
-            entityManager.persist(reputation);
+            voteAnswer = new VoteAnswer();
+            reputation = new Reputation();
+        }
+        voteAnswer.setVoteType(voteType);
+        voteAnswer.setAnswer(answer);
+        voteAnswer.setUser(user);
+        voteAnswer.setPersistDateTime(LocalDateTime.now());
+
+        reputation.setAnswer(answer);
+        reputation.setAuthor(answer.getUser());
+        reputation.setCount(repCount);
+        reputation.setSender(user);
+        reputation.setType(ReputationType.Answer);
+        try {
+            voteAnswerDao.update(voteAnswer);
+            reputationDao.update(reputation);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return voteAnswerDao.sumVote(answer.getId());
     }
