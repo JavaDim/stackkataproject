@@ -36,7 +36,7 @@ public class TestDataInitService {
         Role role_admin = new Role("ROLE_ADMIN");
         Role role_user = new Role("ROLE_USER");
         User admin = new User(
-                1L,
+                null,
                 "admin@mail.ru",
                 "admin",
                 "admin",

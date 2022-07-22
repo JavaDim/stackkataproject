@@ -1,0 +1,9 @@
+services:
+  postgres:
+    container_name: postgres_stack_kata
+    image: postgres
+    env_file: .env
+    volumes:
+      - ./database/postgres/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
