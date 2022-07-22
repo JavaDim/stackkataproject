@@ -1,4 +1,4 @@
-package com.jm.qa.platform.jm;
+package com.javamentor.qa.platform.webapp.configs;
 
 import com.javamentor.qa.platform.service.impl.TestDataInitService;
 import org.junit.jupiter.api.Test;
