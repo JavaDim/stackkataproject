@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1658493106773-1" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="answer_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-2" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="answer_vote_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-3" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="badge_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-4" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="chat_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-5" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="comment_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-6" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="ignore_tag_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-7" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="message_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-8" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="question_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-9" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="question_viewed_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-10" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="related_tag_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-11" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="reputation_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-12" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="role_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-13" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="tag_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-14" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="tracked_tag_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-15" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="user_badges_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-16" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="user_favorite_question_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-17" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="user_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-18" author="Strix G17 (generated)">
+        <createSequence incrementBy="1" sequenceName="vote_question_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1658493106773-19" author="Strix G17 (generated)">
+        <createTable tableName="answer">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_answer"/>
+            </column>
+            <column name="persist_date" type="DATETIME"/>
+            <column name="update_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="html_body" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_helpful" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted_by_moderator" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_accept_time" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-20" author="Strix G17 (generated)">
+        <createTable tableName="badges">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_badges"/>
+            </column>
+            <column name="badge_name" type="VARCHAR(255)"/>
+            <column name="reputations_for_merit" type="INT"/>
+            <column name="description" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-21" author="Strix G17 (generated)">
+        <createTable tableName="bookmarks">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bookmarks"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-22" author="Strix G17 (generated)">
+        <createTable tableName="chat">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_chat"/>
+            </column>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="persist_date" type="DATETIME"/>
+            <column name="chat_type" type="smallint"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-23" author="Strix G17 (generated)">
+        <createTable tableName="comment">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_comment"/>
+            </column>
+            <column name="text" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment_type" type="smallint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="persist_date" type="DATETIME"/>
+            <column name="last_redaction_date" type="DATETIME"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-24" author="Strix G17 (generated)">
+        <createTable tableName="comment_answer">
+            <column name="comment_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_comment_answer"/>
+            </column>
+            <column name="answer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-25" author="Strix G17 (generated)">
+        <createTable tableName="comment_question">
+            <column name="comment_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_comment_question"/>
+            </column>
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-26" author="Strix G17 (generated)">
+        <createTable tableName="group_chat">
+            <column name="chat_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_group_chat"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-27" author="Strix G17 (generated)">
+        <createTable tableName="groupchat_has_users">
+            <column name="chat_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_groupchat_has_users"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_groupchat_has_users"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-28" author="Strix G17 (generated)">
+        <createTable tableName="message">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_message"/>
+            </column>
+            <column name="message" type="CLOB"/>
+            <column name="last_redaction_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="persist_date" type="DATETIME"/>
+            <column name="user_sender_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="chat_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-29" author="Strix G17 (generated)">
+        <createTable tableName="question">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_question"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="persist_date" type="DATETIME"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_redaction_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-30" author="Strix G17 (generated)">
+        <createTable tableName="question_has_tag">
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tag_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-31" author="Strix G17 (generated)">
+        <createTable tableName="question_viewed">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_question_viewed"/>
+            </column>
+            <column name="user_id" type="BIGINT"/>
+            <column name="question_id" type="BIGINT"/>
+            <column name="persist_date" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-32" author="Strix G17 (generated)">
+        <createTable tableName="related_tag">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_related_tag"/>
+            </column>
+            <column name="main_tag" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="child_tag" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-33" author="Strix G17 (generated)">
+        <createTable tableName="reputation">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_reputation"/>
+            </column>
+            <column name="persist_date" type="DATETIME"/>
+            <column name="author_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sender_id" type="BIGINT"/>
+            <column name="count" type="INT"/>
+            <column name="type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_id" type="BIGINT"/>
+            <column name="answer_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-34" author="Strix G17 (generated)">
+        <createTable tableName="role">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_role"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-35" author="Strix G17 (generated)">
+        <createTable tableName="singel_chat">
+            <column name="chat_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_singel_chat"/>
+            </column>
+            <column name="user_one_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="use_two_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-36" author="Strix G17 (generated)">
+        <createTable tableName="tag">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_tag"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="persist_date" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-37" author="Strix G17 (generated)">
+        <createTable tableName="tag_ignore">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_tag_ignore"/>
+            </column>
+            <column name="ignored_tag_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="persist_date" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-38" author="Strix G17 (generated)">
+        <createTable tableName="tag_tracked">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_tag_tracked"/>
+            </column>
+            <column name="tracked_tag_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="persist_date" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-39" author="Strix G17 (generated)">
+        <createTable tableName="user_badges">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_badges"/>
+            </column>
+            <column name="ready" type="BOOLEAN"/>
+            <column name="user_id" type="BIGINT"/>
+            <column name="badges_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-40" author="Strix G17 (generated)">
+        <createTable tableName="user_entity">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_entity"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="full_name" type="VARCHAR(255)"/>
+            <column name="persist_date" type="DATETIME"/>
+            <column name="is_enabled" type="BOOLEAN"/>
+            <column name="is_deleted" type="BOOLEAN"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="link_site" type="VARCHAR(255)"/>
+            <column name="link_github" type="VARCHAR(255)"/>
+            <column name="link_vk" type="VARCHAR(255)"/>
+            <column name="about" type="VARCHAR(255)"/>
+            <column name="image_link" type="VARCHAR(255)"/>
+            <column name="last_redaction_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nickname" type="VARCHAR(255)"/>
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-41" author="Strix G17 (generated)">
+        <createTable tableName="user_favorite_question">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_favorite_question"/>
+            </column>
+            <column name="persist_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="question_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-42" author="Strix G17 (generated)">
+        <createTable tableName="votes_on_answers">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_votes_on_answers"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="answer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="persist_date" type="DATETIME"/>
+            <column name="vote_type" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-43" author="Strix G17 (generated)">
+        <createTable tableName="votes_on_questions">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_votes_on_questions"/>
+            </column>
+            <column name="user_id" type="BIGINT"/>
+            <column name="question_id" type="BIGINT"/>
+            <column name="persist_date" type="DATETIME"/>
+            <column name="vote_typeq" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1658493106773-44" author="Strix G17 (generated)">
+        <addUniqueConstraint columnNames="user_id, question_id" constraintName="uc_70cdceb87eb0f09bfe51c994a"
+                             tableName="answer"/>
+    </changeSet>
+    <changeSet id="1658493106773-45" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="answer"
+                                 constraintName="FK_ANSWER_ON_QUESTION" referencedColumnNames="id"
+                                 referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1658493106773-46" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="answer" constraintName="FK_ANSWER_ON_USER"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-47" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="bookmarks"
+                                 constraintName="FK_BOOKMARKS_ON_QUESTION" referencedColumnNames="id"
+                                 referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1658493106773-48" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="bookmarks"
+                                 constraintName="FK_BOOKMARKS_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-49" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="answer_id" baseTableName="comment_answer"
+                                 constraintName="FK_COMMENT_ANSWER_ON_ANSWER" referencedColumnNames="id"
+                                 referencedTableName="answer"/>
+    </changeSet>
+    <changeSet id="1658493106773-50" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="comment_id" baseTableName="comment_answer"
+                                 constraintName="FK_COMMENT_ANSWER_ON_COMMENT" referencedColumnNames="id"
+                                 referencedTableName="comment"/>
+    </changeSet>
+    <changeSet id="1658493106773-51" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="comment" constraintName="FK_COMMENT_ON_USER"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-52" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="comment_id" baseTableName="comment_question"
+                                 constraintName="FK_COMMENT_QUESTION_ON_COMMENT" referencedColumnNames="id"
+                                 referencedTableName="comment"/>
+    </changeSet>
+    <changeSet id="1658493106773-53" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="comment_question"
+                                 constraintName="FK_COMMENT_QUESTION_ON_QUESTION" referencedColumnNames="id"
+                                 referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1658493106773-54" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="chat_id" baseTableName="group_chat"
+                                 constraintName="FK_GROUP_CHAT_ON_CHAT" referencedColumnNames="id"
+                                 referencedTableName="chat"/>
+    </changeSet>
+    <changeSet id="1658493106773-55" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="chat_id" baseTableName="message" constraintName="FK_MESSAGE_ON_CHAT"
+                                 referencedColumnNames="id" referencedTableName="chat"/>
+    </changeSet>
+    <changeSet id="1658493106773-56" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_sender_id" baseTableName="message"
+                                 constraintName="FK_MESSAGE_ON_USERSENDER" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-57" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="question" constraintName="FK_QUESTION_ON_USER"
+                                 referencedColumnNames="id" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-58" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="question_viewed"
+                                 constraintName="FK_QUESTION_VIEWED_ON_QUESTION" referencedColumnNames="id"
+                                 referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1658493106773-59" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="question_viewed"
+                                 constraintName="FK_QUESTION_VIEWED_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-60" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="child_tag" baseTableName="related_tag"
+                                 constraintName="FK_RELATED_TAG_ON_CHILD_TAG" referencedColumnNames="id"
+                                 referencedTableName="tag"/>
+    </changeSet>
+    <changeSet id="1658493106773-61" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="main_tag" baseTableName="related_tag"
+                                 constraintName="FK_RELATED_TAG_ON_MAIN_TAG" referencedColumnNames="id"
+                                 referencedTableName="tag"/>
+    </changeSet>
+    <changeSet id="1658493106773-62" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="answer_id" baseTableName="reputation"
+                                 constraintName="FK_REPUTATION_ON_ANSWER" referencedColumnNames="id"
+                                 referencedTableName="answer"/>
+    </changeSet>
+    <changeSet id="1658493106773-63" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="reputation"
+                                 constraintName="FK_REPUTATION_ON_AUTHOR" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-64" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="reputation"
+                                 constraintName="FK_REPUTATION_ON_QUESTION" referencedColumnNames="id"
+                                 referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1658493106773-65" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="sender_id" baseTableName="reputation"
+                                 constraintName="FK_REPUTATION_ON_SENDER" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-66" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="chat_id" baseTableName="singel_chat"
+                                 constraintName="FK_SINGEL_CHAT_ON_CHAT" referencedColumnNames="id"
+                                 referencedTableName="chat"/>
+    </changeSet>
+    <changeSet id="1658493106773-67" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_one_id" baseTableName="singel_chat"
+                                 constraintName="FK_SINGEL_CHAT_ON_USERONE" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-68" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="use_two_id" baseTableName="singel_chat"
+                                 constraintName="FK_SINGEL_CHAT_ON_USETWO" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-69" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="ignored_tag_id" baseTableName="tag_ignore"
+                                 constraintName="FK_TAG_IGNORE_ON_IGNOREDTAG" referencedColumnNames="id"
+                                 referencedTableName="tag"/>
+    </changeSet>
+    <changeSet id="1658493106773-70" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="tag_ignore"
+                                 constraintName="FK_TAG_IGNORE_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-71" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="tracked_tag_id" baseTableName="tag_tracked"
+                                 constraintName="FK_TAG_TRACKED_ON_TRACKEDTAG" referencedColumnNames="id"
+                                 referencedTableName="tag"/>
+    </changeSet>
+    <changeSet id="1658493106773-72" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="tag_tracked"
+                                 constraintName="FK_TAG_TRACKED_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-73" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="badges_id" baseTableName="user_badges"
+                                 constraintName="FK_USER_BADGES_ON_BADGES" referencedColumnNames="id"
+                                 referencedTableName="badges"/>
+    </changeSet>
+    <changeSet id="1658493106773-74" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_badges"
+                                 constraintName="FK_USER_BADGES_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-75" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="user_entity"
+                                 constraintName="FK_USER_ENTITY_ON_ROLE" referencedColumnNames="id"
+                                 referencedTableName="role"/>
+    </changeSet>
+    <changeSet id="1658493106773-76" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="user_favorite_question"
+                                 constraintName="FK_USER_FAVORITE_QUESTION_ON_QUESTION" referencedColumnNames="id"
+                                 referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1658493106773-77" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_favorite_question"
+                                 constraintName="FK_USER_FAVORITE_QUESTION_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-78" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="answer_id" baseTableName="votes_on_answers"
+                                 constraintName="FK_VOTES_ON_ANSWERS_ON_ANSWER" referencedColumnNames="id"
+                                 referencedTableName="answer"/>
+    </changeSet>
+    <changeSet id="1658493106773-79" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="votes_on_answers"
+                                 constraintName="FK_VOTES_ON_ANSWERS_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-80" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="votes_on_questions"
+                                 constraintName="FK_VOTES_ON_QUESTIONS_ON_QUESTION" referencedColumnNames="id"
+                                 referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1658493106773-81" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="votes_on_questions"
+                                 constraintName="FK_VOTES_ON_QUESTIONS_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-82" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="chat_id" baseTableName="groupchat_has_users"
+                                 constraintName="fk_grohasuse_on_group_chat" referencedColumnNames="chat_id"
+                                 referencedTableName="group_chat"/>
+    </changeSet>
+    <changeSet id="1658493106773-83" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="groupchat_has_users"
+                                 constraintName="fk_grohasuse_on_user" referencedColumnNames="id"
+                                 referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1658493106773-84" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="question_has_tag"
+                                 constraintName="fk_quehastag_on_question" referencedColumnNames="id"
+                                 referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1658493106773-85" author="Strix G17 (generated)">
+        <addForeignKeyConstraint baseColumnNames="tag_id" baseTableName="question_has_tag"
+                                 constraintName="fk_quehastag_on_tag" referencedColumnNames="id"
+                                 referencedTableName="tag"/>
+    </changeSet>
+
+</databaseChangeLog>
