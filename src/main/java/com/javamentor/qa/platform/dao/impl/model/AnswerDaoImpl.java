@@ -17,8 +17,7 @@ public class AnswerDaoImpl extends ReadWriteDaoImpl<Answer, Long> implements Ans
     private EntityManager entityManager;
 
     @Override
-    public Optional<Answer> getAnswerForVote
-            (Long answerId, Long userId) {
+    public Optional<Answer> getAnswerForVote(Long answerId, Long userId) {
         return SingleResultUtil.getSingleResultOrNull(entityManager.createQuery("""
                         SELECT a
                         FROM Answer a
