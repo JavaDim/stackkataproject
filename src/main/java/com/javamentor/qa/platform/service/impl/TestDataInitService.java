@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.service.impl;
 
+import com.javamentor.qa.platform.dao.impl.model.RoleDaoImpl;
 import com.javamentor.qa.platform.models.entity.question.*;
 import com.javamentor.qa.platform.models.entity.question.answer.Answer;
 import com.javamentor.qa.platform.models.entity.user.Role;
@@ -7,6 +8,7 @@ import com.javamentor.qa.platform.models.entity.user.User;
 import com.javamentor.qa.platform.models.entity.user.UserFavoriteQuestion;
 import com.javamentor.qa.platform.service.abstracts.model.AnswerService;
 import com.javamentor.qa.platform.service.abstracts.model.QuestionService;
+import com.javamentor.qa.platform.service.impl.model.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,7 @@ import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TestDataInitService {
@@ -24,38 +27,89 @@ public class TestDataInitService {
     private EntityManager entityManager;
     private final QuestionService questionService;
     private final AnswerService answerService;
-
+    private final UserServiceImpl userServiceImpl;
+    private final RoleDaoImpl roleDaoImpl;
     @Autowired
-    public TestDataInitService(QuestionService questionService, AnswerService answerService) {
+    public TestDataInitService(UserServiceImpl userServiceImpl, QuestionService questionService, AnswerService answerService, RoleDaoImpl roleDaoImpl) {
         this.questionService = questionService;
         this.answerService = answerService;
+        this.roleDaoImpl = roleDaoImpl;
+        this.userServiceImpl = userServiceImpl;
+
     }
+    public static Role ROLE_ADMIN = new Role("ROLE_ADMIN");
+    public static Role ROLE_USER = new Role("ROLE_USER");
+    public static User ADMIN = new User(
+            null,
+            "fdfd@mail.ru",
+            "admin",
+            "admin",
+            LocalDateTime.now(),
+            true,
+            false,
+            "City",
+            "https://www.google.ru",
+            "https://github.com",
+            "https://vk.com",
+            "About",
+            "image link",
+            LocalDateTime.now(),
+            "admin",
+            ROLE_ADMIN);
+
+    public static User USER = new User(
+            null,
+            "abdgd@mail.ru",
+            "oleg",
+            "Oleg",
+            LocalDateTime.now(),
+            true,
+            false,
+            "Samara",
+            "wdawd",
+            "wdw",
+            "fgefw",
+            "omg",
+            "wd",
+            LocalDateTime.now(),
+            "Olegon",
+            ROLE_USER);
+
 
     @Transactional
     public void createEntity() {
-        Role role_admin = new Role("ROLE_ADMIN");
-        Role role_user = new Role("ROLE_USER");
-        User admin = new User(
-                null,
-                "admin@mail.ru",
-                "admin",
-                "admin",
-                LocalDateTime.now(),
-                true,
-                false,
-                "City",
-                "https://www.google.ru",
-                "https://github.com",
-                "https://vk.com",
-                "About",
-                "image link",
-                LocalDateTime.now(),
-                "admin",
-                role_admin);
-
-        entityManager.persist(role_admin);
-        entityManager.persist(role_user);
-        entityManager.persist(admin);
+        User userAdmin = ADMIN;
+        Optional<Role> roleFound = roleDaoImpl.getByName(userAdmin.getRole().getName());
+        if (roleFound.isPresent()) {
+            userAdmin.setRole(roleFound.get());
+            System.out.println(roleFound.get().getName());
+            if (userServiceImpl.getByEmail(userAdmin.getEmail()).isPresent()) {
+                return;
+            }
+            entityManager.persist(userAdmin);
+        } else {
+            entityManager.persist(userAdmin.getRole());
+            roleFound = roleDaoImpl.getByName(userAdmin.getRole().getName());
+            System.out.println(roleFound.get().getName());
+            userAdmin.setRole(roleFound.get());
+            entityManager.persist(userAdmin);
+        }
+        User userUser = USER;
+        Optional<Role> roleFoundUser = roleDaoImpl.getByName(userUser.getRole().getName());
+        if (roleFoundUser.isPresent()) {
+            userUser.setRole(roleFoundUser.get());
+            System.out.println(roleFoundUser.get().getName());
+            if (userServiceImpl.getByEmail(userUser.getEmail()).isPresent()) {
+                return;
+            }
+            entityManager.persist(userUser);
+        } else {
+            entityManager.persist(userUser.getRole());
+            roleFoundUser = roleDaoImpl.getByName(userUser.getRole().getName());
+            System.out.println(roleFoundUser.get().getName());
+            userUser.setRole(roleFoundUser.get());
+            entityManager.persist(userUser);
+        }
     }
 
     @Transactional
