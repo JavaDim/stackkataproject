@@ -1,0 +1,1361 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1659529931182-1
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: answer_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-2
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: answer_vote_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-3
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: badge_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-4
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: chat_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-5
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: comment_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-6
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: ignore_tag_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-7
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: message_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-8
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: question_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-9
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: question_viewed_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-10
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: related_tag_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-11
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: reputation_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-12
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: role_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-13
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: tag_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-14
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: tracked_tag_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-15
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: user_badges_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-16
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: user_favorite_question_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-17
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: user_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-18
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: vote_question_seq
+            startValue: 1
+  - changeSet:
+      id: 1659529931182-19
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_answer
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: persist_date
+                  type: DATETIME
+              - column:
+                  constraints:
+                    nullable: false
+                  name: update_date
+                  type: DATETIME
+              - column:
+                  constraints:
+                    nullable: false
+                  name: question_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: html_body
+                  type: CLOB
+              - column:
+                  constraints:
+                    nullable: false
+                  name: is_helpful
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: is_deleted
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: is_deleted_by_moderator
+                  type: BOOLEAN
+              - column:
+                  name: date_accept_time
+                  type: DATETIME
+            tableName: answer
+  - changeSet:
+      id: 1659529931182-20
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_badges
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: badge_name
+                  type: VARCHAR(255)
+              - column:
+                  name: reputations_for_merit
+                  type: INT
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+            tableName: badges
+  - changeSet:
+      id: 1659529931182-21
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_bookmarks
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: question_id
+                  type: BIGINT
+            tableName: bookmarks
+  - changeSet:
+      id: 1659529931182-22
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_chat
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: persist_date
+                  type: DATETIME
+              - column:
+                  name: chat_type
+                  type: smallint
+            tableName: chat
+  - changeSet:
+      id: 1659529931182-23
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_comment
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: text
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: comment_type
+                  type: smallint
+              - column:
+                  name: persist_date
+                  type: DATETIME
+              - column:
+                  name: last_redaction_date
+                  type: DATETIME
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: BIGINT
+            tableName: comment
+  - changeSet:
+      id: 1659529931182-24
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_comment_answer
+                  name: comment_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: answer_id
+                  type: BIGINT
+            tableName: comment_answer
+  - changeSet:
+      id: 1659529931182-25
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_comment_question
+                  name: comment_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: question_id
+                  type: BIGINT
+            tableName: comment_question
+  - changeSet:
+      id: 1659529931182-26
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_group_chat
+                  name: chat_id
+                  type: BIGINT
+            tableName: group_chat
+  - changeSet:
+      id: 1659529931182-27
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_groupchat_has_users
+                  name: chat_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_groupchat_has_users
+                  name: user_id
+                  type: BIGINT
+            tableName: groupchat_has_users
+  - changeSet:
+      id: 1659529931182-28
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_message
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: message
+                  type: CLOB
+              - column:
+                  constraints:
+                    nullable: false
+                  name: last_redaction_date
+                  type: DATETIME
+              - column:
+                  name: persist_date
+                  type: DATETIME
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_sender_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: chat_id
+                  type: BIGINT
+            tableName: message
+  - changeSet:
+      id: 1659529931182-29
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_question
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: description
+                  type: CLOB
+              - column:
+                  name: persist_date
+                  type: DATETIME
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: last_redaction_date
+                  type: DATETIME
+              - column:
+                  name: is_deleted
+                  type: BOOLEAN
+            tableName: question
+  - changeSet:
+      id: 1659529931182-30
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: question_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: tag_id
+                  type: BIGINT
+            tableName: question_has_tag
+  - changeSet:
+      id: 1659529931182-31
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_question_viewed
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: question_id
+                  type: BIGINT
+              - column:
+                  name: persist_date
+                  type: DATETIME
+            tableName: question_viewed
+  - changeSet:
+      id: 1659529931182-32
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_related_tag
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: main_tag
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: child_tag
+                  type: BIGINT
+            tableName: related_tag
+  - changeSet:
+      id: 1659529931182-33
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_reputation
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: persist_date
+                  type: DATETIME
+              - column:
+                  constraints:
+                    nullable: false
+                  name: author_id
+                  type: BIGINT
+              - column:
+                  name: sender_id
+                  type: BIGINT
+              - column:
+                  name: count
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: type
+                  type: INT
+              - column:
+                  name: question_id
+                  type: BIGINT
+              - column:
+                  name: answer_id
+                  type: BIGINT
+            tableName: reputation
+  - changeSet:
+      id: 1659529931182-34
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_role
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: role
+  - changeSet:
+      id: 1659529931182-35
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_singel_chat
+                  name: chat_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_one_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: use_two_id
+                  type: BIGINT
+            tableName: singel_chat
+  - changeSet:
+      id: 1659529931182-36
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_tag
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: persist_date
+                  type: DATETIME
+            tableName: tag
+  - changeSet:
+      id: 1659529931182-37
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_tag_ignore
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ignored_tag_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: persist_date
+                  type: DATETIME
+            tableName: tag_ignore
+  - changeSet:
+      id: 1659529931182-38
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_tag_tracked
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: tracked_tag_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: persist_date
+                  type: DATETIME
+            tableName: tag_tracked
+  - changeSet:
+      id: 1659529931182-39
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user_badges
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: ready
+                  type: BOOLEAN
+              - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: badges_id
+                  type: BIGINT
+            tableName: user_badges
+  - changeSet:
+      id: 1659529931182-40
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user_entity
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: full_name
+                  type: VARCHAR(255)
+              - column:
+                  name: persist_date
+                  type: DATETIME
+              - column:
+                  name: is_enabled
+                  type: BOOLEAN
+              - column:
+                  name: is_deleted
+                  type: BOOLEAN
+              - column:
+                  name: city
+                  type: VARCHAR(255)
+              - column:
+                  name: link_site
+                  type: VARCHAR(255)
+              - column:
+                  name: link_github
+                  type: VARCHAR(255)
+              - column:
+                  name: link_vk
+                  type: VARCHAR(255)
+              - column:
+                  name: about
+                  type: VARCHAR(255)
+              - column:
+                  name: image_link
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: last_redaction_date
+                  type: DATETIME
+              - column:
+                  name: nickname
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: role_id
+                  type: BIGINT
+            tableName: user_entity
+  - changeSet:
+      id: 1659529931182-41
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user_favorite_question
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: persist_date
+                  type: DATETIME
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: question_id
+                  type: BIGINT
+            tableName: user_favorite_question
+  - changeSet:
+      id: 1659529931182-42
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_votes_on_answers
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: answer_id
+                  type: BIGINT
+              - column:
+                  name: persist_date
+                  type: DATETIME
+              - column:
+                  name: vote_type
+                  type: VARCHAR(255)
+            tableName: votes_on_answers
+  - changeSet:
+      id: 1659529931182-43
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_votes_on_questions
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: question_id
+                  type: BIGINT
+              - column:
+                  name: persist_date
+                  type: DATETIME
+              - column:
+                  name: vote_typeq
+                  type: VARCHAR(255)
+            tableName: votes_on_questions
+  - changeSet:
+      id: 1659529931182-44
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: user_id, question_id
+            constraintName: uc_70cdceb87eb0f09bfe51c994a
+            tableName: answer
+  - changeSet:
+      id: 1659529931182-45
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: email
+            constraintName: uc_user_entity_email
+            tableName: user_entity
+  - changeSet:
+      id: 1659529931182-46
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: question_id
+            baseTableName: answer
+            constraintName: FK_ANSWER_ON_QUESTION
+            referencedColumnNames: id
+            referencedTableName: question
+  - changeSet:
+      id: 1659529931182-47
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: answer
+            constraintName: FK_ANSWER_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-48
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: question_id
+            baseTableName: bookmarks
+            constraintName: FK_BOOKMARKS_ON_QUESTION
+            referencedColumnNames: id
+            referencedTableName: question
+  - changeSet:
+      id: 1659529931182-49
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: bookmarks
+            constraintName: FK_BOOKMARKS_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-50
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: answer_id
+            baseTableName: comment_answer
+            constraintName: FK_COMMENT_ANSWER_ON_ANSWER
+            referencedColumnNames: id
+            referencedTableName: answer
+  - changeSet:
+      id: 1659529931182-51
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: comment_id
+            baseTableName: comment_answer
+            constraintName: FK_COMMENT_ANSWER_ON_COMMENT
+            referencedColumnNames: id
+            referencedTableName: comment
+  - changeSet:
+      id: 1659529931182-52
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: comment
+            constraintName: FK_COMMENT_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-53
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: comment_id
+            baseTableName: comment_question
+            constraintName: FK_COMMENT_QUESTION_ON_COMMENT
+            referencedColumnNames: id
+            referencedTableName: comment
+  - changeSet:
+      id: 1659529931182-54
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: question_id
+            baseTableName: comment_question
+            constraintName: FK_COMMENT_QUESTION_ON_QUESTION
+            referencedColumnNames: id
+            referencedTableName: question
+  - changeSet:
+      id: 1659529931182-55
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: chat_id
+            baseTableName: group_chat
+            constraintName: FK_GROUP_CHAT_ON_CHAT
+            referencedColumnNames: id
+            referencedTableName: chat
+  - changeSet:
+      id: 1659529931182-56
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: chat_id
+            baseTableName: message
+            constraintName: FK_MESSAGE_ON_CHAT
+            referencedColumnNames: id
+            referencedTableName: chat
+  - changeSet:
+      id: 1659529931182-57
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_sender_id
+            baseTableName: message
+            constraintName: FK_MESSAGE_ON_USERSENDER
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-58
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: question
+            constraintName: FK_QUESTION_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-59
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: question_id
+            baseTableName: question_viewed
+            constraintName: FK_QUESTION_VIEWED_ON_QUESTION
+            referencedColumnNames: id
+            referencedTableName: question
+  - changeSet:
+      id: 1659529931182-60
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: question_viewed
+            constraintName: FK_QUESTION_VIEWED_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-61
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: child_tag
+            baseTableName: related_tag
+            constraintName: FK_RELATED_TAG_ON_CHILD_TAG
+            referencedColumnNames: id
+            referencedTableName: tag
+  - changeSet:
+      id: 1659529931182-62
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: main_tag
+            baseTableName: related_tag
+            constraintName: FK_RELATED_TAG_ON_MAIN_TAG
+            referencedColumnNames: id
+            referencedTableName: tag
+  - changeSet:
+      id: 1659529931182-63
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: answer_id
+            baseTableName: reputation
+            constraintName: FK_REPUTATION_ON_ANSWER
+            referencedColumnNames: id
+            referencedTableName: answer
+  - changeSet:
+      id: 1659529931182-64
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: author_id
+            baseTableName: reputation
+            constraintName: FK_REPUTATION_ON_AUTHOR
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-65
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: question_id
+            baseTableName: reputation
+            constraintName: FK_REPUTATION_ON_QUESTION
+            referencedColumnNames: id
+            referencedTableName: question
+  - changeSet:
+      id: 1659529931182-66
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: sender_id
+            baseTableName: reputation
+            constraintName: FK_REPUTATION_ON_SENDER
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-67
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: chat_id
+            baseTableName: singel_chat
+            constraintName: FK_SINGEL_CHAT_ON_CHAT
+            referencedColumnNames: id
+            referencedTableName: chat
+  - changeSet:
+      id: 1659529931182-68
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_one_id
+            baseTableName: singel_chat
+            constraintName: FK_SINGEL_CHAT_ON_USERONE
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-69
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: use_two_id
+            baseTableName: singel_chat
+            constraintName: FK_SINGEL_CHAT_ON_USETWO
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-70
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: ignored_tag_id
+            baseTableName: tag_ignore
+            constraintName: FK_TAG_IGNORE_ON_IGNOREDTAG
+            referencedColumnNames: id
+            referencedTableName: tag
+  - changeSet:
+      id: 1659529931182-71
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: tag_ignore
+            constraintName: FK_TAG_IGNORE_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-72
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: tracked_tag_id
+            baseTableName: tag_tracked
+            constraintName: FK_TAG_TRACKED_ON_TRACKEDTAG
+            referencedColumnNames: id
+            referencedTableName: tag
+  - changeSet:
+      id: 1659529931182-73
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: tag_tracked
+            constraintName: FK_TAG_TRACKED_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-74
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: badges_id
+            baseTableName: user_badges
+            constraintName: FK_USER_BADGES_ON_BADGES
+            referencedColumnNames: id
+            referencedTableName: badges
+  - changeSet:
+      id: 1659529931182-75
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: user_badges
+            constraintName: FK_USER_BADGES_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-76
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: user_entity
+            constraintName: FK_USER_ENTITY_ON_ROLE
+            referencedColumnNames: id
+            referencedTableName: role
+  - changeSet:
+      id: 1659529931182-77
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: question_id
+            baseTableName: user_favorite_question
+            constraintName: FK_USER_FAVORITE_QUESTION_ON_QUESTION
+            referencedColumnNames: id
+            referencedTableName: question
+  - changeSet:
+      id: 1659529931182-78
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: user_favorite_question
+            constraintName: FK_USER_FAVORITE_QUESTION_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-79
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: answer_id
+            baseTableName: votes_on_answers
+            constraintName: FK_VOTES_ON_ANSWERS_ON_ANSWER
+            referencedColumnNames: id
+            referencedTableName: answer
+  - changeSet:
+      id: 1659529931182-80
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: votes_on_answers
+            constraintName: FK_VOTES_ON_ANSWERS_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-81
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: question_id
+            baseTableName: votes_on_questions
+            constraintName: FK_VOTES_ON_QUESTIONS_ON_QUESTION
+            referencedColumnNames: id
+            referencedTableName: question
+  - changeSet:
+      id: 1659529931182-82
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: votes_on_questions
+            constraintName: FK_VOTES_ON_QUESTIONS_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-83
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: chat_id
+            baseTableName: groupchat_has_users
+            constraintName: fk_grohasuse_on_group_chat
+            referencedColumnNames: chat_id
+            referencedTableName: group_chat
+  - changeSet:
+      id: 1659529931182-84
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: groupchat_has_users
+            constraintName: fk_grohasuse_on_user
+            referencedColumnNames: id
+            referencedTableName: user_entity
+  - changeSet:
+      id: 1659529931182-85
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: question_id
+            baseTableName: question_has_tag
+            constraintName: fk_quehastag_on_question
+            referencedColumnNames: id
+            referencedTableName: question
+  - changeSet:
+      id: 1659529931182-86
+      author: user (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: tag_id
+            baseTableName: question_has_tag
+            constraintName: fk_quehastag_on_tag
+            referencedColumnNames: id
+            referencedTableName: tag
+
