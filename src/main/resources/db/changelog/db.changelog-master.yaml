@@ -1,3 +1,0 @@
-databaseChangeLog:
-  - include:
-      file: db/changelog/2022/08/03-01-changelog.yaml
