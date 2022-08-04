@@ -66,9 +66,9 @@ public class TestDataInitService {
             true,
             false,
             "Samara",
-            "wdawd",
-            "wdw",
-            "fgefw",
+            "https://www.google.ru",
+            "https://github.com",
+            "https://vk.com",
             "omg",
             "wd",
             LocalDateTime.now(),
@@ -82,7 +82,7 @@ public class TestDataInitService {
         Optional<Role> roleFound = roleDaoImpl.getByName(userAdmin.getRole().getName());
         if (roleFound.isPresent()) {
             userAdmin.setRole(roleFound.get());
-            System.out.println(roleFound.get().getName());
+            //System.out.println(roleFound.get().getName());
             if (userServiceImpl.getByEmail(userAdmin.getEmail()).isPresent()) {
                 return;
             }
@@ -90,7 +90,7 @@ public class TestDataInitService {
         } else {
             entityManager.persist(userAdmin.getRole());
             roleFound = roleDaoImpl.getByName(userAdmin.getRole().getName());
-            System.out.println(roleFound.get().getName());
+            //System.out.println(roleFound.get().getName());
             userAdmin.setRole(roleFound.get());
             entityManager.persist(userAdmin);
         }
@@ -98,7 +98,7 @@ public class TestDataInitService {
         Optional<Role> roleFoundUser = roleDaoImpl.getByName(userUser.getRole().getName());
         if (roleFoundUser.isPresent()) {
             userUser.setRole(roleFoundUser.get());
-            System.out.println(roleFoundUser.get().getName());
+            //System.out.println(roleFoundUser.get().getName());
             if (userServiceImpl.getByEmail(userUser.getEmail()).isPresent()) {
                 return;
             }
@@ -106,7 +106,7 @@ public class TestDataInitService {
         } else {
             entityManager.persist(userUser.getRole());
             roleFoundUser = roleDaoImpl.getByName(userUser.getRole().getName());
-            System.out.println(roleFoundUser.get().getName());
+            //System.out.println(roleFoundUser.get().getName());
             userUser.setRole(roleFoundUser.get());
             entityManager.persist(userUser);
         }
