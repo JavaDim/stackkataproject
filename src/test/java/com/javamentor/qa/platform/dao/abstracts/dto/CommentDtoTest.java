@@ -27,14 +27,6 @@ class CommentDtoTest {
     }
 
     @Test
-    public void testQuestionIsNull() {
-        Question question = new Question();
-        question.setId(1L);
-        when(dtoDao.questionIsNull(1L)).thenReturn(false);
-        assertEquals(false, dtoService.questionIsNull(1L));
-    }
-
-    @Test
     public void testGetAllQuestionCommentDtoById() {
         QuestionCommentDto commentDto = new QuestionCommentDto();
         commentDto.setQuestionId(1L);
