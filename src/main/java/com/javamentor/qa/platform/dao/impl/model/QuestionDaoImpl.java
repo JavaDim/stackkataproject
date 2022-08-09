@@ -23,4 +23,5 @@ public class QuestionDaoImpl extends ReadWriteDaoImpl<Question, Long> implements
                         """, Long.class)
                 .getSingleResult();
     }
+
 }

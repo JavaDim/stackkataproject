@@ -21,4 +21,5 @@ public class QuestionServiceImpl extends ReadWriteServiceImpl<Question, Long> im
     public long getCountQuestion() {
         return questionDao.getCountQuestion();
     }
+
 }
