@@ -1,4 +1,4 @@
-package com.javamentor.qa.platform.models.entity.dto.question;
+package com.javamentor.qa.platform.models.dto;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
 package com.javamentor.qa.platform.dao.abstracts.dto;
 
-import com.javamentor.qa.platform.models.dto.user.UserDto;
+import com.javamentor.qa.platform.models.dto.UserDto;
 
 import java.util.Optional;
 
