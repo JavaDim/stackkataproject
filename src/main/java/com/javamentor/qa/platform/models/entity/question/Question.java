@@ -130,5 +130,23 @@ public class Question implements Serializable {
     public int hashCode() {
         return getClass().hashCode();
     }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", persistDateTime=" + persistDateTime +
+                ", user=" + user +
+                ", tags=" + tags +
+                ", lastUpdateDateTime=" + lastUpdateDateTime +
+                ", isDeleted=" + isDeleted +
+                ", answers=" + answers +
+                ", commentQuestions=" + commentQuestions +
+                ", userFavoriteQuestions=" + userFavoriteQuestions +
+                ", voteQuestions=" + voteQuestions +
+                '}';
+    }
 }
 
