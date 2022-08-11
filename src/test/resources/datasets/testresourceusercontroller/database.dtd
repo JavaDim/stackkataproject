@@ -1,0 +1,74 @@
+<!ELEMENT dataset (user_entity| votes_on_answers| votes_on_questions| reputation| answer| question| role)*>
+        <!ELEMENT user_entity (#PCDATA)>
+        <!ATTLIST user_entity
+                id CDATA #REQUIRED
+                about CDATA #REQUIRED
+                city CDATA #REQUIRED
+                email CDATA #REQUIRED
+                full_name CDATA #REQUIRED
+                image_link CDATA #REQUIRED
+                is_deleted CDATA #REQUIRED
+                is_enabled CDATA #REQUIRED
+                last_redaction_date CDATA #REQUIRED
+                link_github CDATA #REQUIRED
+                link_site CDATA #REQUIRED
+                link_vk CDATA #REQUIRED
+                nickname CDATA #REQUIRED
+                password CDATA #REQUIRED
+                persist_date CDATA #REQUIRED
+                role_id CDATA #REQUIRED>
+
+        <!ELEMENT votes_on_answers (#PCDATA)>
+        <!ATTLIST votes_on_answers
+                answer_id CDATA #REQUIRED
+                id CDATA #REQUIRED
+                persist_date CDATA #REQUIRED
+                user_id CDATA #REQUIRED
+                vote_type CDATA #REQUIRED>
+
+        <!ELEMENT votes_on_questions (#PCDATA)>
+        <!ATTLIST votes_on_questions
+                id CDATA #REQUIRED
+                persist_date CDATA #REQUIRED
+                question_id CDATA #REQUIRED
+                user_id CDATA #REQUIRED
+                vote_typeq CDATA #REQUIRED>
+
+        <!ELEMENT reputation (#PCDATA)>
+        <!ATTLIST reputation
+                answer_id CDATA #REQUIRED
+                author_id CDATA #REQUIRED
+                count CDATA #REQUIRED
+                id CDATA #REQUIRED
+                persist_date CDATA #REQUIRED
+                question_id CDATA #REQUIRED
+                sender_id CDATA #REQUIRED
+                type CDATA #REQUIRED>
+
+        <!ELEMENT answer (#PCDATA)>
+        <!ATTLIST answer
+                id CDATA #REQUIRED
+                date_accept_time CDATA #REQUIRED
+                html_body CDATA #REQUIRED
+                is_deleted CDATA #REQUIRED
+                is_deleted_by_moderator CDATA #REQUIRED
+                is_helpful CDATA #REQUIRED
+                persist_date CDATA #REQUIRED
+                update_date CDATA #REQUIRED
+                question_id CDATA #REQUIRED
+                user_id CDATA #REQUIRED>
+
+        <!ELEMENT question (#PCDATA)>
+        <!ATTLIST question
+                id CDATA #REQUIRED
+                description CDATA #REQUIRED
+                is_deleted CDATA #REQUIRED
+                last_redaction_date CDATA #REQUIRED
+                persist_date CDATA #REQUIRED
+                title CDATA #REQUIRED
+                user_id CDATA #REQUIRED>
+
+        <!ELEMENT role (#PCDATA)>
+        <!ATTLIST role
+                id CDATA #REQUIRED
+                name CDATA #REQUIRED>

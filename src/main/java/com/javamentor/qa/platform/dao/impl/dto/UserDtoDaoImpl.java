@@ -21,7 +21,7 @@ public class UserDtoDaoImpl implements UserDtoDao {
 
         TypedQuery<UserDto> userDtoQuery = entityManager.createQuery(
                         """
-                                  SELECT new com.javamentor.qa.platform.models.dto.user.UserDto
+                                  SELECT new com.javamentor.qa.platform.models.dto.UserDto
                                   (
                                       u.id,        
                                       u.email,
