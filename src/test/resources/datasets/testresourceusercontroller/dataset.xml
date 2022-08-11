@@ -1,0 +1,40 @@
+<!DOCTYPE dataset SYSTEM "src/test/resources/datasets/testresourceusercontroller/database.dtd">
+
+<dataset>
+    <user_entity id="100" about="test user 1" city="Medina" email="bill@mail.ru" full_name="Bill Gates"
+                 image_link="test image link" is_deleted="false" is_enabled="true"
+                 last_redaction_date="2022-07-29 14:02:02.030177"
+                 link_github="github@bill.gates" link_site="microsoft.com" link_vk="vk.com/bill"
+                 nickname="Trey" password="pass"
+                 persist_date="2022-07-28 14:02:02.030177" role_id="100"/>
+    <user_entity id="101" about="test user 2" city="Austin" email="elon@mail.ru" full_name="Elon Musk"
+                 image_link="test image link" is_deleted="false" is_enabled="true"
+                 last_redaction_date="2022-07-29 14:02:02.030177"
+                 link_github="github@elon.musk" link_site="tesla.com" link_vk="vk.com/elon"
+                 nickname="TechnoKing" password="pass"
+                 persist_date="2022-07-28 14:02:02.030177" role_id="101"/>
+
+    <answer id="100" date_accept_time="2022-07-29 14:02:02.030177" html_body="html" is_deleted="false"
+            is_deleted_by_moderator="false" is_helpful="true" persist_date="2022-07-29 14:02:02.030177"
+            update_date="2022-07-29 14:02:02.030177" question_id="100" user_id="101"/>
+
+    <question id="100" description="question" is_deleted="false" last_redaction_date="2022-07-29 14:02:02.030177"
+              persist_date="2022-07-29 14:02:02.030177" title="question" user_id="101"/>
+
+    <reputation id="100" count="5" persist_date="2022-07-29 14:02:02.030177" type="1" answer_id="100" author_id="100" question_id="100" sender_id="101"/>
+    <reputation id="101" count="5" persist_date="2022-07-29 14:02:02.030177" type="1" answer_id="100" author_id="100" question_id="100" sender_id="101"/>
+    <reputation id="102" count="5" persist_date="2022-07-29 14:02:02.030177" type="1" answer_id="100" author_id="101" question_id="100" sender_id="100"/>
+
+    <votes_on_answers id="100" persist_date="2022-07-29 14:02:02.030177" vote_type="UP" answer_id="100" user_id="100"/>
+    <votes_on_answers id="101" persist_date="2022-07-29 14:02:02.030177" vote_type="UP" answer_id="100" user_id="101"/>
+    <votes_on_answers id="102" persist_date="2022-07-29 14:02:02.030177" vote_type="DOWN" answer_id="100" user_id="101"/>
+    <votes_on_answers id="103" persist_date="2022-07-29 14:02:02.030177" vote_type="UP" answer_id="100" user_id="101"/>
+
+    <votes_on_questions id="100" persist_date="2022-07-29 14:02:02.030177" vote_typeq="UP" question_id="100" user_id="100"/>
+    <votes_on_questions id="101" persist_date="2022-07-29 14:02:02.030177" vote_typeq="DOWN" question_id="100" user_id="100"/>
+    <votes_on_questions id="102" persist_date="2022-07-29 14:02:02.030177" vote_typeq="DOWN" question_id="100" user_id="101"/>
+    <votes_on_questions id="103" persist_date="2022-07-29 14:02:02.030177" vote_typeq="UP" question_id="100" user_id="101"/>
+
+    <role id="100" name="ADMIN"/>
+    <role id="101" name="USER"/>
+</dataset>

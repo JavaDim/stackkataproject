@@ -29,7 +29,7 @@ public abstract class BaseTest {
     protected MockMvc mockMvc;
 
     @Autowired
-    WebApplicationContext webApplicationContext;
+    private WebApplicationContext webApplicationContext;
 
     protected void setUp() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
