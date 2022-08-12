@@ -511,25 +511,25 @@ docker compose stop
 
 ![](src/main/resources/static/images/OMG.PNG)
 
-Вписываем в VM Option `spring.profiles.active=local`
+Вписываем в VM Option `spring.profiles.active=local/dev` - выбираем профиль для запуска 
 
-Active profiles `local`
+Environment variables `HIBERNATE_DDL=;MYPSQL_SERVER=;MYPSQL_PORT_PORT=;MYPSQL_DB=;DB_USERNAME=;DB_PASSWORD=`
 
-Environment variables `DB_NAME=;DB_PORT=;DB_USERNAME=;DB_PASSWORD=;ACTIVE_PROFILE=`
 где
 
-`DB_NAME` - твоё название БД
+HIBERNATE_DDL - настройка ddl
 
-`DB_PORT` - твой порт
+MYPSQL_SERVER' - адрес сервера (по умолчанию localhost)
 
-`DB_USERNAME` - твой логин 
+MYPSQL_PORT - порт
 
-`DB_PASSWORD` - твой пароль
+MYPSQL_DB - название БД
 
-`ACTIVE_PROFILE` - активный профиль
+DB_USERNAME - твой логин 
 
+DB_PASSWORD - твой пароль
 
-
+-ea -Dspring.profiles.active= - выбери профиль
 
 
 
