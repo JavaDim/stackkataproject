@@ -507,9 +507,9 @@ docker compose stop
 
 Заходим в _Edit Configuration_`->`_Configuration_`->`_Environment variables_
 
-![](src/main/resources/static/images/VMOption2.PNG)
+![](src/main/resources/static/images/VMOption2.png)
 
-![](src/main/resources/static/images/OMG.PNG)
+![](src/main/resources/static/images/OMG.png)
 
 Вписываем в VM Option `spring.profiles.active=local/dev` - выбираем профиль для запуска 
 
