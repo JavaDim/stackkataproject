@@ -500,3 +500,38 @@ docker compose stop
 Для выполнения этой команды также нужно, чтобы текущая директория в терминале была установлена на ту, в которой находится файл `docker-compose.yaml`.
 
 Также, для запуска/перезапуска/остановки запущенных контейнеров можно воспользоваться графическим приложением Docker Desktop.
+
+## Настройка профиля подключения к БД
+
+Для запуска БД с локальными настройками
+
+Заходим в _Edit Configuration_`->`_Configuration_`->`_Environment variables_
+
+![](src/main/resources/static/images/VMOption2.PNG)
+
+![](src/main/resources/static/images/OMG.PNG)
+
+Вписываем в VM Option `spring.profiles.active=local`
+
+Active profiles `local`
+
+Environment variables `DB_NAME=;DB_PORT=;DB_USERNAME=;DB_PASSWORD=;ACTIVE_PROFILE=`
+где
+
+`DB_NAME` - твоё название БД
+
+`DB_PORT` - твой порт
+
+`DB_USERNAME` - твой логин 
+
+`DB_PASSWORD` - твой пароль
+
+`ACTIVE_PROFILE` - активный профиль
+
+
+
+
+
+
+
+
