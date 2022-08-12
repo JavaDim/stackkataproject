@@ -11,12 +11,10 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
-@Transactional
 public class AnswerDtoDaoImpl implements AnswerDtoDao {
 
     @PersistenceContext
     private EntityManager entityManager;
-
 
     @Override
     @Transactional
