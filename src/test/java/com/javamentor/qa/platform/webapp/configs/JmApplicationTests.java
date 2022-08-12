@@ -37,6 +37,7 @@ public
 //@ExtendWith(SpringExtension.class)
 class JmApplicationTests {
 
+
     public static void main(String[] args) {
         SpringApplication.run(JmApplication.class, args);
     }
@@ -54,6 +55,7 @@ class JmApplicationTests {
         Assert.assertFalse(user.isEmpty());
         user.get().setId(null);
         Assert.assertEquals(TestDataInitService.ADMIN,user.orElse(null));
+
     }
 //    @Test
 //    @Rollback(false)
