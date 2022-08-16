@@ -36,8 +36,9 @@ public class VoteQuestionDaoImpl extends ReadWriteDaoImpl<VoteQuestion, Long> im
     public Long getSumVoteQuestion(Question question) {
         TypedQuery<Long> questionTypedQuery = entityManager
                 .createQuery("""
-                        SELECT COALESCE(SUM (CASE WHEN
-                        CASE WHEN vq.voteTypeQ = 'UP' THEN 1 WHEN vq.voteTypeQ = 'DOWN' THEN -1 END), 0) 
+                        SELECT COALESCE(SUM (CASE 
+                        WHEN vq.voteTypeQ = 'UP' THEN 1 
+                        WHEN vq.voteTypeQ = 'DOWN' THEN -1 END), 0) 
                         FROM VoteQuestion vq
                         WHERE vq.question.id=:questionId
                         """, Long.class)

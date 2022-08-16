@@ -1,5 +1,6 @@
-package com.javamentor.qa.platform.dao.abstracts.dto;
+package com.javamentor.qa.platform.dao.impl.dto;
 
+import com.javamentor.qa.platform.dao.abstracts.dto.CommentDtoDao;
 import com.javamentor.qa.platform.models.dto.QuestionCommentDto;
 import org.springframework.stereotype.Repository;
 
