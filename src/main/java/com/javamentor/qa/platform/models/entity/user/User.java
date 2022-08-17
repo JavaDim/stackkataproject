@@ -7,7 +7,16 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import java.io.Serial;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
@@ -21,8 +30,8 @@ import java.util.Collections;
 @Table(name = "user_entity")
 public class User implements UserDetails {
 
+    @Serial
     private static final long serialVersionUID = 8086496705293852501L;
-
     @Id
     @GeneratedValue(generator = "User_seq")
     private Long id;
@@ -44,7 +53,7 @@ public class User implements UserDetails {
     private LocalDateTime persistDateTime;
 
     @Column(name = "is_enabled")
-    private Boolean isEnabled = true;
+    private Boolean isEnabled = false;
 
     @Column(name = "is_deleted")
     private Boolean isDeleted = false;
