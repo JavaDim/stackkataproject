@@ -5,13 +5,9 @@ import com.javamentor.qa.platform.models.entity.user.User;
 import com.javamentor.qa.platform.service.abstracts.model.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
-public class UserServiceImpl extends ReadWriteServiceImpl <User, Long> implements UserService {
-
+public class UserServiceImpl extends ReadWriteServiceImpl<User, Long> implements UserService {
     private final UserDao userDao;
 
     @Autowired
@@ -20,7 +16,8 @@ public class UserServiceImpl extends ReadWriteServiceImpl <User, Long> implement
         this.userDao = userDao;
     }
 
-    public Optional<User> getByEmail(String email) {
-        return userDao.getByEmail(email);
+    @Override
+    public void persist(User user) {
+        userDao.persist(user);
     }
 }
