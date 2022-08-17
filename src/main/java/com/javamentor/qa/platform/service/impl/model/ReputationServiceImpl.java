@@ -29,14 +29,4 @@ public class ReputationServiceImpl extends ReadWriteServiceImpl<Reputation, Long
     public Optional<Reputation> getByAnswerIdSenderId(Long answerId, Long senderId) {
         return reputationDao.getByAnswerIdSenderId(answerId, senderId);
     }
-
-    @Override
-    public void upCountOfReputationQuestionAuthor(Question question) {
-        reputationDao.upCountOfReputationQuestionAuthor(question);
-    }
-
-    @Override
-    public void downCountOfReputationQuestionAuthor(Question question) {
-        reputationDao.downCountOfReputationQuestionAuthor(question);
-    }
 }

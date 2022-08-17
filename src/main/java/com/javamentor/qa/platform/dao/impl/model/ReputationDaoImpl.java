@@ -49,26 +49,22 @@ public class ReputationDaoImpl extends ReadWriteDaoImpl<Reputation, Long> implem
     }
 
     @Override
-    public void upCountOfReputationQuestionAuthor(Question question) {
+    public void updateToUpCountReputation(Reputation reputation) {
         entityManager.createQuery("""
-                        UPDATE Reputation r 
-                        SET r.count = r.count+10 
-                        WHERE r.author = 
-                        (SELECT q.user FROM Question q
-                        WHERE q=:question)
-                        """)
-                .setParameter("question", question);
+                                        UPDATE Reputation r 
+                                        SET r.count = r.count + 10
+                                        WHERE r.id =: reputationId  
+                                        """)
+                .setParameter("reputationId", reputation.getId());
     }
 
     @Override
-    public void downCountOfReputationQuestionAuthor(Question question) {
+    public void updateToDownCountReputation(Reputation reputation) {
         entityManager.createQuery("""
-                        UPDATE Reputation r 
-                        SET r.count = r.count-5 
-                        WHERE r.author = 
-                        (SELECT q.user FROM Question q
-                        WHERE q=:question)
-                        """)
-                .setParameter("question", question);
+                                        UPDATE Reputation r 
+                                        SET r.count = r.count - 5 
+                                        WHERE r.id =: reputationId  
+                                        """)
+                .setParameter("reputationId", reputation.getId());
     }
 }

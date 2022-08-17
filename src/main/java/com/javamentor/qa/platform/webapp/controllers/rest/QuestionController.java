@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.webapp.controllers.rest;
 
+import com.javamentor.qa.platform.exception.VoteException;
 import com.javamentor.qa.platform.models.entity.question.Question;
 import com.javamentor.qa.platform.models.entity.question.VoteQuestion;
 import com.javamentor.qa.platform.models.entity.question.VoteTypeQ;
@@ -25,14 +26,13 @@ public class QuestionController {
     private final QuestionService questionService;
     private final UserService userService;
     private final VoteQuestionService voteQuestionService;
-    private final ReputationService reputationService;
 
-    public QuestionController(CommentDtoService commentDtoService, QuestionService questionService, UserService userService, VoteQuestionService voteQuestionService, ReputationService reputationService) {
+
+    public QuestionController(CommentDtoService commentDtoService, QuestionService questionService, UserService userService, VoteQuestionService voteQuestionService) {
         this.commentDtoService = commentDtoService;
         this.questionService = questionService;
         this.userService = userService;
         this.voteQuestionService = voteQuestionService;
-        this.reputationService = reputationService;
     }
 
     @GetMapping("/{id}/comment")
@@ -57,9 +57,7 @@ public class QuestionController {
     public Long upVoteQuestion(@PathVariable(value = "questionId") Long id, Principal principal) {
         User user = userService.getByEmail(principal.getName()).get();
         Question question = questionService.getById(id).get();
-        VoteQuestion voteQuestion = new VoteQuestion(user, question, VoteTypeQ.UP);
-        voteQuestionService.persist(voteQuestion);
-        reputationService.upCountOfReputationQuestionAuthor(question);
+        voteQuestionService.upVoteQuestion(user, question);
         return voteQuestionService.getSumVoteQuestion(question);
     }
 
@@ -67,9 +65,7 @@ public class QuestionController {
     public Long downVoteQuestion(@PathVariable(value = "questionId") Long id, Principal principal) {
         User user = userService.getByEmail(principal.getName()).get();
         Question question = questionService.getById(id).get();
-        VoteQuestion voteQuestion = new VoteQuestion(user, question, VoteTypeQ.DOWN);
-        voteQuestionService.persist(voteQuestion);
-        reputationService.downCountOfReputationQuestionAuthor(question);
+        voteQuestionService.downVoteQuestion(user, question);
         return voteQuestionService.getSumVoteQuestion(question);
     }
 }

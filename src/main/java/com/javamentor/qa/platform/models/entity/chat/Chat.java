@@ -36,7 +36,7 @@ public class Chat {
     private LocalDateTime persistDate;
 
     @Enumerated
-    @Column(columnDefinition = "integer")
+    @Column(columnDefinition = "smallint")
     private ChatType chatType;
 
 

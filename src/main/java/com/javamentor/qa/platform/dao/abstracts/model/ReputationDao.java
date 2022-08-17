@@ -11,6 +11,6 @@ public interface ReputationDao extends ReadWriteDao<Reputation, Long> {
     Optional<Reputation> getByAuthorAndSenderAndQuestionAndType(User author, User sender, Question question, ReputationType reputationType);
 
     Optional<Reputation> getByAnswerIdSenderId(Long answerId, Long senderId);
-    void upCountOfReputationQuestionAuthor(Question question);
-    void downCountOfReputationQuestionAuthor(Question question);
+    void updateToUpCountReputation(Reputation reputation);
+    void updateToDownCountReputation(Reputation reputation);
 }

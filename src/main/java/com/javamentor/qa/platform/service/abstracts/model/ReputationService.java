@@ -11,6 +11,4 @@ public interface ReputationService extends ReadWriteService<Reputation, Long> {
     Optional<Reputation> getByAuthorAndSenderAndQuestionAndType(User author, User sender, Question question, ReputationType type);
 
     Optional<Reputation> getByAnswerIdSenderId(Long answerId, Long senderId);
-    void upCountOfReputationQuestionAuthor(Question question);
-    void downCountOfReputationQuestionAuthor(Question question);
 }
