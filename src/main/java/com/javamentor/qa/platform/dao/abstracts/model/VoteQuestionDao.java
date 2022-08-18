@@ -11,6 +11,4 @@ public interface VoteQuestionDao extends ReadWriteDao<VoteQuestion, Long> {
     Optional<VoteQuestion> getByUserAndQuestion(User user, Question question);
 
     Long getSumVoteQuestion(Question question);
-    void upVoteQuestion(User user, Question question);
-    void downVoteQuestion(User user, Question question);
 }

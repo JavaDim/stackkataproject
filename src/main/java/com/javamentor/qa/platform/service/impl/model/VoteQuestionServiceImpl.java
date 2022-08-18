@@ -2,8 +2,10 @@ package com.javamentor.qa.platform.service.impl.model;
 
 import com.javamentor.qa.platform.dao.abstracts.model.ReputationDao;
 import com.javamentor.qa.platform.dao.abstracts.model.VoteQuestionDao;
+import com.javamentor.qa.platform.exception.VoteException;
 import com.javamentor.qa.platform.models.entity.question.Question;
 import com.javamentor.qa.platform.models.entity.question.VoteQuestion;
+import com.javamentor.qa.platform.models.entity.question.VoteTypeQ;
 import com.javamentor.qa.platform.models.entity.user.User;
 import com.javamentor.qa.platform.models.entity.user.reputation.Reputation;
 import com.javamentor.qa.platform.models.entity.user.reputation.ReputationType;
@@ -41,10 +43,26 @@ public class VoteQuestionServiceImpl extends ReadWriteServiceImpl<VoteQuestion, 
     @Transactional
     @Override
     public void upVoteQuestion(User user, Question question) {
-        voteQuestionDao.upVoteQuestion(user, question);
-        Optional<Reputation> optionalReputation = reputationDao.getByAuthorAndSenderAndQuestionAndType(question.getUser(), user, question, ReputationType.VoteQuestion);
-        if (optionalReputation.isPresent()) {
-            reputationDao.updateToUpCountReputation(optionalReputation.get());
+        if (user == question.getUser()) {
+            throw new VoteException("Пользователь не может голосовать за свой вопрос");
+        }
+        Optional<VoteQuestion> optionalVoteQuestion = voteQuestionDao.getByUserAndQuestion(user, question);
+        if (optionalVoteQuestion.isEmpty()) {
+            voteQuestionDao.persist(new VoteQuestion(user, question, VoteTypeQ.UP));
+        } else {
+            VoteQuestion voteQuestion = optionalVoteQuestion.get();
+            if (voteQuestion.getVoteTypeQ() == VoteTypeQ.UP) {
+                throw new VoteException("Ранее пользователь проголосовал 'за'");
+            } else {
+                voteQuestion.setVoteTypeQ(VoteTypeQ.UP);
+                voteQuestionDao.update(voteQuestion);
+            }
+        }
+        Optional<Reputation> reputationOptional = reputationDao.getByAuthorAndSenderAndQuestionAndType(question.getUser(), user, question, ReputationType.VoteQuestion);
+        if (reputationOptional.isPresent()) {
+            Reputation reputation = reputationOptional.get();
+            reputation.setCount(reputation.getCount() + 10);
+            reputationDao.update(reputation);
         } else {
             Reputation reputation = new Reputation();
             reputation.setQuestion(question);
@@ -59,10 +77,26 @@ public class VoteQuestionServiceImpl extends ReadWriteServiceImpl<VoteQuestion, 
     @Transactional
     @Override
     public void downVoteQuestion(User user, Question question) {
-        voteQuestionDao.downVoteQuestion(user, question);
-        Optional<Reputation> optionalReputation = reputationDao.getByAuthorAndSenderAndQuestionAndType(question.getUser(), user, question, ReputationType.VoteQuestion);
-        if (optionalReputation.isPresent()) {
-            reputationDao.updateToDownCountReputation(optionalReputation.get());
+        if (user == question.getUser()) {
+            throw new VoteException("Пользователь не может голосовать за свой вопрос");
+        }
+        Optional<VoteQuestion> optionalVoteQuestion = voteQuestionDao.getByUserAndQuestion(user, question);
+        if (optionalVoteQuestion.isEmpty()) {
+            voteQuestionDao.persist(new VoteQuestion(user, question, VoteTypeQ.DOWN));
+        } else {
+            VoteQuestion voteQuestion = optionalVoteQuestion.get();
+            if (voteQuestion.getVoteTypeQ() == VoteTypeQ.DOWN) {
+                throw new VoteException("Ранее пользователь проголосовал 'против'");
+            } else {
+                voteQuestion.setVoteTypeQ(VoteTypeQ.DOWN);
+                voteQuestionDao.update(voteQuestion);
+            }
+        }
+        Optional<Reputation> reputationOptional = reputationDao.getByAuthorAndSenderAndQuestionAndType(question.getUser(), user, question, ReputationType.VoteQuestion);
+        if (reputationOptional.isPresent()) {
+            Reputation reputation = reputationOptional.get();
+            reputation.setCount(reputation.getCount() - 5);
+            reputationDao.update(reputation);
         } else {
             Reputation reputation = new Reputation();
             reputation.setQuestion(question);

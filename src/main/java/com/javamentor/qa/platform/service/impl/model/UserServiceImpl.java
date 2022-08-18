@@ -6,6 +6,8 @@ import com.javamentor.qa.platform.service.abstracts.model.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl extends ReadWriteServiceImpl<User, Long> implements UserService {
     private final UserDao userDao;
@@ -19,5 +21,10 @@ public class UserServiceImpl extends ReadWriteServiceImpl<User, Long> implements
     @Override
     public void persist(User user) {
         userDao.persist(user);
+    }
+
+    @Override
+    public Optional<User> getByEmail(String email) {
+        return Optional.empty();
     }
 }

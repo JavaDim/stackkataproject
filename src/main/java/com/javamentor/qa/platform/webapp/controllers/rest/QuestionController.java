@@ -24,15 +24,11 @@ public class QuestionController {
 
     private final CommentDtoService commentDtoService;
     private final QuestionService questionService;
-    private final UserService userService;
-    private final VoteQuestionService voteQuestionService;
 
 
-    public QuestionController(CommentDtoService commentDtoService, QuestionService questionService, UserService userService, VoteQuestionService voteQuestionService) {
+    public QuestionController(CommentDtoService commentDtoService, QuestionService questionService) {
         this.commentDtoService = commentDtoService;
         this.questionService = questionService;
-        this.userService = userService;
-        this.voteQuestionService = voteQuestionService;
     }
 
     @GetMapping("/{id}/comment")
@@ -51,21 +47,5 @@ public class QuestionController {
     @GetMapping("/count")
     public ResponseEntity<?> getCountQuestion() {
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(questionService.getCountQuestion());
-    }
-
-    @PostMapping("/{questionId}/upVote")
-    public Long upVoteQuestion(@PathVariable(value = "questionId") Long id, Principal principal) {
-        User user = userService.getByEmail(principal.getName()).get();
-        Question question = questionService.getById(id).get();
-        voteQuestionService.upVoteQuestion(user, question);
-        return voteQuestionService.getSumVoteQuestion(question);
-    }
-
-    @PostMapping("/{questionId}/downVote")
-    public Long downVoteQuestion(@PathVariable(value = "questionId") Long id, Principal principal) {
-        User user = userService.getByEmail(principal.getName()).get();
-        Question question = questionService.getById(id).get();
-        voteQuestionService.downVoteQuestion(user, question);
-        return voteQuestionService.getSumVoteQuestion(question);
     }
 }
